@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nginx配置]]></title>
+    <url>%2F2019%2F09%2F17%2Fnginx%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[nginx配置，结合wsl（windows的linux子系统） sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的nginx指定其他配置文件的，停止时也需指定参数启动： 1nginx -p `pwd`/ -c conf/nginx.conf 停止： 1nginx -p `pwd`/ -c conf/nginx.conf -s quit 安装旧版本的问题 openssl版本问题 [https://imququ.com/post/my-nginx-conf.html] 推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 wsl 安装 openresty (新版) 首选 apt-get 方式安装 [https://blog.csdn.net/caoshunxin01/article/details/79355659] 缺失 luarocks [https://www.jianshu.com/p/239d9583d62c] 123./configure --prefix=/usr/local/openresty/luajit \ --with-lua=/usr/local/openresty/luajit/ \ --with-lua-include=/usr/local/openresty/luajit/include/luajit-2.1 缺失 luasocket [https://blog.csdn.net/songyulong8888/article/details/80363444] 利用 1luarocks install luasocket wsl ubuntu 开启 ssh 远程连接自带ssh服务有问题需要先卸载 [https://www.jianshu.com/p/cd4d604e0b44] 查找可安装软件 apt-cache search]]></content>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F09%2F16%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>

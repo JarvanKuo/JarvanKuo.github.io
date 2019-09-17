@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="nginx,">
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="如果放弃太早，你永远都不知道自己会错过什么。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JarvanKuo的捉虫馆">
-<meta property="og:url" content="https://JarvanKuo.github.io/index.html">
+<meta name="description" content="nginx配置，结合wsl（windows的linux子系统） sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的nginx指定其他配置文件的，停止时也需指定参数启动： 1nginx -p `pwd`/ -c conf/nginx.conf  停止： 1nginx -p `pwd`/ -c conf/nginx.conf -s quit  安">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx配置">
+<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/17/nginx配置/index.html">
 <meta property="og:site_name" content="JarvanKuo的捉虫馆">
-<meta property="og:description" content="如果放弃太早，你永远都不知道自己会错过什么。">
+<meta property="og:description" content="nginx配置，结合wsl（windows的linux子系统） sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的nginx指定其他配置文件的，停止时也需指定参数启动： 1nginx -p `pwd`/ -c conf/nginx.conf  停止： 1nginx -p `pwd`/ -c conf/nginx.conf -s quit  安">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-17T06:13:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JarvanKuo的捉虫馆">
-<meta name="twitter:description" content="如果放弃太早，你永远都不知道自己会错过什么。">
+<meta name="twitter:title" content="nginx配置">
+<meta name="twitter:description" content="nginx配置，结合wsl（windows的linux子系统） sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的nginx指定其他配置文件的，停止时也需指定参数启动： 1nginx -p `pwd`/ -c conf/nginx.conf  停止： 1nginx -p `pwd`/ -c conf/nginx.conf -s quit  安">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://JarvanKuo.github.io/">
+  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/17/nginx配置/">
 
 
 
 
 
-  <title>JarvanKuo的捉虫馆</title>
+  <title>nginx配置 | JarvanKuo的捉虫馆</title>
   
 
 
@@ -155,8 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,9 +302,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -333,9 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/17/nginx配置/" itemprop="url">nginx配置</a></h1>
+          <h1 class="post-title" itemprop="name headline">nginx配置</h1>
         
 
         <div class="post-meta">
@@ -385,9 +384,7 @@
       
 
       
-        
-          
-            <p>nginx配置，结合wsl（windows的linux子系统）</p>
+        <p>nginx配置，结合wsl（windows的linux子系统）</p>
 <h2 id="sh使用zsh后，环境变量需要在-zshrc-配置文件中定义，-etc-profile-是不会生效的"><a href="#sh使用zsh后，环境变量需要在-zshrc-配置文件中定义，-etc-profile-是不会生效的" class="headerlink" title="sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的"></a>sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的</h2><h2 id="nginx指定其他配置文件的，停止时也需指定参数"><a href="#nginx指定其他配置文件的，停止时也需指定参数" class="headerlink" title="nginx指定其他配置文件的，停止时也需指定参数"></a>nginx指定其他配置文件的，停止时也需指定参数</h2><p>启动：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -p `<span class="built_in">pwd</span>`/ -c conf/nginx.conf</span><br></pre></td></tr></table></figure>
 
@@ -413,8 +410,6 @@
 </ol>
 <h2 id="wsl-ubuntu-开启-ssh-远程连接"><a href="#wsl-ubuntu-开启-ssh-远程连接" class="headerlink" title="wsl ubuntu 开启 ssh 远程连接"></a>wsl ubuntu 开启 ssh 远程连接</h2><p>自带ssh服务有问题需要先卸载 [<a href="https://www.jianshu.com/p/cd4d604e0b44]" target="_blank" rel="noopener">https://www.jianshu.com/p/cd4d604e0b44]</a></p>
 <h2 id="查找可安装软件-apt-cache-search"><a href="#查找可安装软件-apt-cache-search" class="headerlink" title="查找可安装软件 apt-cache search"></a>查找可安装软件 apt-cache search</h2>
-          
-        
       
     </div>
     
@@ -429,146 +424,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jarvan Kuo">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JarvanKuo的捉虫馆">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T23:05:00+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/16/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -578,10 +463,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -589,6 +475,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NjY2Mi8yMzE3Mg=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -609,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -670,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sh使用zsh后，环境变量需要在-zshrc-配置文件中定义，-etc-profile-是不会生效的"><span class="nav-number">1.</span> <span class="nav-text">sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx指定其他配置文件的，停止时也需指定参数"><span class="nav-number">2.</span> <span class="nav-text">nginx指定其他配置文件的，停止时也需指定参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装旧版本的问题"><span class="nav-number">3.</span> <span class="nav-text">安装旧版本的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl-安装-openresty-新版"><span class="nav-number">4.</span> <span class="nav-text">wsl 安装 openresty (新版)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl-ubuntu-开启-ssh-远程连接"><span class="nav-number">5.</span> <span class="nav-text">wsl ubuntu 开启 ssh 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找可安装软件-apt-cache-search"><span class="nav-number">6.</span> <span class="nav-text">查找可安装软件 apt-cache search</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -816,6 +736,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -844,6 +768,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
