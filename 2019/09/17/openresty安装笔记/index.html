@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="hexo,">
+  <meta name="keywords" content="openresty,">
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
-<meta name="keywords" content="hexo">
+<meta name="description" content="openresty安装，参考安装OpenResty(Nginx+Lua)开发环境 安装步骤：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# 创建目录/usr/servers，以后我们把所有软件安装在此目录mkdir">
+<meta name="keywords" content="openresty">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo笔记">
-<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/18/hexo笔记/index.html">
+<meta property="og:title" content="openresty安装笔记">
+<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/17/openresty安装笔记/index.html">
 <meta property="og:site_name" content="JK的技术博客">
-<meta property="og:description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
+<meta property="og:description" content="openresty安装，参考安装OpenResty(Nginx+Lua)开发环境 安装步骤：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# 创建目录/usr/servers，以后我们把所有软件安装在此目录mkdir">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T08:58:10.000Z">
+<meta property="og:updated_time" content="2019-09-18T10:47:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo笔记">
-<meta name="twitter:description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
+<meta name="twitter:title" content="openresty安装笔记">
+<meta name="twitter:description" content="openresty安装，参考安装OpenResty(Nginx+Lua)开发环境 安装步骤：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# 创建目录/usr/servers，以后我们把所有软件安装在此目录mkdir">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/18/hexo笔记/">
+  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/17/openresty安装笔记/">
 
 
 
 
 
-  <title>hexo笔记 | JK的技术博客</title>
+  <title>openresty安装笔记 | JK的技术博客</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/18/hexo笔记/">
+    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/17/openresty安装笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jarvan Kuo">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo笔记</h1>
+          <h1 class="post-title" itemprop="name headline">openresty安装笔记</h1>
         
 
         <div class="post-meta">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T13:14:40+08:00">
-                2019-09-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T13:50:09+08:00">
+                2019-09-17
               </time>
             
 
@@ -372,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/建站/" itemprop="url" rel="index">
-                    <span itemprop="name">建站</span>
+                  <a href="/categories/分布式/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式</span>
                   </a>
                 </span>
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  189
+                  488
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -445,18 +445,15 @@
       
 
       
-        <p>hexo的一些配置和命令</p>
-<h2 id="hexo-常用指令"><a href="#hexo-常用指令" class="headerlink" title="hexo 常用指令"></a>hexo 常用指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"post title with whitespace"</span> // 新增md文章</span><br><span class="line">hexo clean // 清除</span><br><span class="line">hexo g // 生成静态文件。</span><br><span class="line">hexo g -d // 文件生成后立即部署网站</span><br></pre></td></tr></table></figure>
+        <p>openresty安装，参考<a href="https://www.iteye.com/blog/jinnianshilongnian-2186270" target="_blank" rel="noopener">安装OpenResty(Nginx+Lua)开发环境</a></p>
+<h2 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录/usr/servers，以后我们把所有软件安装在此目录</span></span><br><span class="line">mkdir -p /usr/servers  </span><br><span class="line"><span class="built_in">cd</span> /usr/servers/  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl </span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载ngx_openresty-1.7.7.2.tar.gz并解压</span></span><br><span class="line">wget http://openresty.org/download/ngx_openresty-1.7.7.2.tar.gz  </span><br><span class="line">tar -xzvf ngx_openresty-1.7.7.2.tar.gz  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装LuaJIT</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle/LuaJIT-2.1-20150120/  </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 没有安装make的需要先安装</span></span><br><span class="line">    apt install make</span><br><span class="line">    apt install make-guile</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 没安装gcc的需要先执行以下命令</span></span><br><span class="line">	sudo apt-get  build-dep  gcc </span><br><span class="line">	</span><br><span class="line">make clean &amp;&amp; make &amp;&amp; make install  </span><br><span class="line">ln -sf luajit-2.1.0-alpha /usr/<span class="built_in">local</span>/bin/luajit  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载ngx_cache_purge模块，该模块用于清理nginx缓存</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle  </span><br><span class="line">wget https://github.com/FRiCKLE/ngx_cache_purge/archive/2.3.tar.gz  </span><br><span class="line">tar -xvf 2.3.tar.gz  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载nginx_upstream_check_module模块，该模块用于ustream健康检查</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle  </span><br><span class="line">wget https://github.com/yaoweibin/nginx_upstream_check_module/archive/v0.3.0.tar.gz  </span><br><span class="line">tar -xvf v0.3.0.tar.gz   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装ngx_openresty</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2  </span><br><span class="line">./configure --prefix=/usr/servers --with-http_realip_module  --with-pcre  --with-luajit --add-module=./bundle/ngx_cache_purge-2.3/ --add-module=./bundle/nginx_upstream_check_module-0.3.0/ -j2  </span><br><span class="line">	<span class="comment"># 报错 checking for zlib library ... not found，需要安装 zlib</span></span><br><span class="line">	sudo apt-get install zlib1g-dev</span><br><span class="line">make &amp;&amp; make install  </span><br><span class="line">	<span class="comment"># 报错 recipe for target 'objs/src/event/ngx_event_openssl.o' failed，openssl版本问题，需要安装旧版本</span></span><br><span class="line">	<span class="comment"># 需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控</span></span><br><span class="line">	<span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle </span><br><span class="line">	wget -O openssl.tar.gz -c https://github.com/openssl/openssl/archive/OpenSSL_1_0_2k.tar.gz</span><br><span class="line">	tar zxf openssl.tar.gz</span><br><span class="line">	mv openssl-OpenSSL_1_0_2k/ openssl</span><br><span class="line">	<span class="comment"># 重新配置 ngx_openresty</span></span><br><span class="line">	<span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2</span><br><span class="line">	./configure \</span><br><span class="line">	--prefix=/usr/servers \</span><br><span class="line">	--with-http_realip_module  \</span><br><span class="line">	--with-pcre  \</span><br><span class="line">	--with-luajit \</span><br><span class="line">	--add-module=./bundle/ngx_cache_purge-2.3/ \</span><br><span class="line">	--add-module=./bundle/nginx_upstream_check_module-0.3.0/ \</span><br><span class="line">	--with-openssl=./bundle/openssl \</span><br><span class="line">	-j2  </span><br><span class="line">	<span class="comment"># 重新make</span></span><br><span class="line">	make &amp;&amp; make install  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动nginx，访问 http://localhost/ 成功即可</span></span><br><span class="line">/usr/servers/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
 
-<h2 id="站内文章跳转"><a href="#站内文章跳转" class="headerlink" title="站内文章跳转"></a>站内文章跳转</h2><p>通过内置的标签插件的语法post_link来实现引用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_link 文章文件名（不要后缀） 文章标题（可选） %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><p>请看 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官网</a></p>
-<h2 id="NexT主题"><a href="#NexT主题" class="headerlink" title="NexT主题"></a>NexT主题</h2><p>使用流行的NexT，<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官网</a></p>
-<h2 id="默认主题"><a href="#默认主题" class="headerlink" title="默认主题"></a>默认主题</h2><p>插件扩展请看 <a href="https://hans2936.github.io/2017/10/22/PageLog/" target="_blank" rel="noopener">个人网站的功能插件</a></p>
-<h2 id="评论插件-gitalk"><a href="#评论插件-gitalk" class="headerlink" title="评论插件-gitalk"></a>评论插件-gitalk</h2><p><a href="https://jinfagang.github.io/2018/10/07/%E7%BB%88%E4%BA%8E%EF%BC%81%EF%BC%81%EF%BC%81%E8%AE%B0%E5%BD%95%E5%A6%82%E4%BD%95%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%85%8D%E7%BD%AEgitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">记录如何在hexo next主题下配置gitalk评论系统</a></p>
-<h2 id="修改内容区宽度"><a href="#修改内容区宽度" class="headerlink" title="修改内容区宽度"></a>修改内容区宽度</h2><p><a href="https://zuiyu1818.cn/posts/NexT_codewidth.html" target="_blank" rel="noopener">NexT | 修改内容区域的宽度</a></p>
-<h2 id="添加文章阴影"><a href="#添加文章阴影" class="headerlink" title="添加文章阴影"></a>添加文章阴影</h2><p><a href="https://blog.csdn.net/mqdxiaoxiao/article/details/93797964" target="_blank" rel="noopener">Hexo博客NexT主题下添加文章边框阴影效果</a></p>
+<p><em>拓展：</em></p>
+<ol>
+<li><a href="https://blog.csdn.net/qq_35865125/article/details/80519030" target="_blank" rel="noopener">ubuntu gcc 安装 使用</a></li>
+<li><a href="https://blog.csdn.net/wsclinux/article/details/50494501" target="_blank" rel="noopener">ubantu下安装zlib的方法</a></li>
+<li><a href="https://imququ.com/post/my-nginx-conf.html" target="_blank" rel="noopener">Nginx 配置之完整篇</a></li>
+</ol>
 
       
     </div>
@@ -474,7 +471,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/openresty/" rel="tag"># openresty</a>
           
         </div>
       
@@ -487,15 +484,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/openresty配置/" rel="next" title="openresty配置">
-                <i class="fa fa-chevron-left"></i> openresty配置
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/17/wsl安装笔记/" rel="prev" title="wsl安装笔记">
+                wsl安装笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -666,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-常用指令"><span class="nav-number">1.</span> <span class="nav-text">hexo 常用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内文章跳转"><span class="nav-number">2.</span> <span class="nav-text">站内文章跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo安装"><span class="nav-number">3.</span> <span class="nav-text">hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题"><span class="nav-number">4.</span> <span class="nav-text">NexT主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主题"><span class="nav-number">5.</span> <span class="nav-text">默认主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论插件-gitalk"><span class="nav-number">6.</span> <span class="nav-text">评论插件-gitalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内容区宽度"><span class="nav-number">7.</span> <span class="nav-text">修改内容区宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章阴影"><span class="nav-number">8.</span> <span class="nav-text">添加文章阴影</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装步骤："><span class="nav-number">1.</span> <span class="nav-text">安装步骤：</span></a></li></ol></div>
             
 
           </div>

@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="hexo,">
+  <meta name="keywords" content="ubuntu,">
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
-<meta name="keywords" content="hexo">
+<meta name="description" content="wsl 下的 ubuntu 系统一些问题总结！ 环境win10 下 wsl 环境安装 ubuntu 修改更新源 备份文件  1sudo cp /etc/apt/sources.list  /etc/apt/sources.list.old  使用阿里源  打开文件：  12 sudo vi /etc/apt/sources.list`   整个文件替换成阿里源：  12345678910deb h">
+<meta name="keywords" content="ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo笔记">
-<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/18/hexo笔记/index.html">
+<meta property="og:title" content="wsl安装笔记">
+<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/17/wsl安装笔记/index.html">
 <meta property="og:site_name" content="JK的技术博客">
-<meta property="og:description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
+<meta property="og:description" content="wsl 下的 ubuntu 系统一些问题总结！ 环境win10 下 wsl 环境安装 ubuntu 修改更新源 备份文件  1sudo cp /etc/apt/sources.list  /etc/apt/sources.list.old  使用阿里源  打开文件：  12 sudo vi /etc/apt/sources.list`   整个文件替换成阿里源：  12345678910deb h">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T08:58:10.000Z">
+<meta property="og:updated_time" content="2019-09-18T09:25:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo笔记">
-<meta name="twitter:description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
+<meta name="twitter:title" content="wsl安装笔记">
+<meta name="twitter:description" content="wsl 下的 ubuntu 系统一些问题总结！ 环境win10 下 wsl 环境安装 ubuntu 修改更新源 备份文件  1sudo cp /etc/apt/sources.list  /etc/apt/sources.list.old  使用阿里源  打开文件：  12 sudo vi /etc/apt/sources.list`   整个文件替换成阿里源：  12345678910deb h">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/18/hexo笔记/">
+  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/17/wsl安装笔记/">
 
 
 
 
 
-  <title>hexo笔记 | JK的技术博客</title>
+  <title>wsl安装笔记 | JK的技术博客</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/18/hexo笔记/">
+    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/17/wsl安装笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jarvan Kuo">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo笔记</h1>
+          <h1 class="post-title" itemprop="name headline">wsl安装笔记</h1>
         
 
         <div class="post-meta">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T13:14:40+08:00">
-                2019-09-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T13:50:09+08:00">
+                2019-09-17
               </time>
             
 
@@ -372,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/建站/" itemprop="url" rel="index">
-                    <span itemprop="name">建站</span>
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
                   </a>
                 </span>
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  189
+                  374
                 </span>
               
 
@@ -445,18 +445,40 @@
       
 
       
-        <p>hexo的一些配置和命令</p>
-<h2 id="hexo-常用指令"><a href="#hexo-常用指令" class="headerlink" title="hexo 常用指令"></a>hexo 常用指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"post title with whitespace"</span> // 新增md文章</span><br><span class="line">hexo clean // 清除</span><br><span class="line">hexo g // 生成静态文件。</span><br><span class="line">hexo g -d // 文件生成后立即部署网站</span><br></pre></td></tr></table></figure>
+        <p>wsl 下的 ubuntu 系统一些问题总结！</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>win10 下 wsl 环境安装 ubuntu</p>
+<h2 id="修改更新源"><a href="#修改更新源" class="headerlink" title="修改更新源"></a>修改更新源</h2><ol>
+<li><p>备份文件</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list  /etc/apt/sources.list.old</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用阿里源</p>
+<p> 打开文件：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> sudo vi /etc/apt/sources.list</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
 
-<h2 id="站内文章跳转"><a href="#站内文章跳转" class="headerlink" title="站内文章跳转"></a>站内文章跳转</h2><p>通过内置的标签插件的语法post_link来实现引用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_link 文章文件名（不要后缀） 文章标题（可选） %&#125;</span><br></pre></td></tr></table></figure>
+<p> 整个文件替换成阿里源：</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
 
-<h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><p>请看 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">官网</a></p>
-<h2 id="NexT主题"><a href="#NexT主题" class="headerlink" title="NexT主题"></a>NexT主题</h2><p>使用流行的NexT，<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT官网</a></p>
-<h2 id="默认主题"><a href="#默认主题" class="headerlink" title="默认主题"></a>默认主题</h2><p>插件扩展请看 <a href="https://hans2936.github.io/2017/10/22/PageLog/" target="_blank" rel="noopener">个人网站的功能插件</a></p>
-<h2 id="评论插件-gitalk"><a href="#评论插件-gitalk" class="headerlink" title="评论插件-gitalk"></a>评论插件-gitalk</h2><p><a href="https://jinfagang.github.io/2018/10/07/%E7%BB%88%E4%BA%8E%EF%BC%81%EF%BC%81%EF%BC%81%E8%AE%B0%E5%BD%95%E5%A6%82%E4%BD%95%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%85%8D%E7%BD%AEgitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">记录如何在hexo next主题下配置gitalk评论系统</a></p>
-<h2 id="修改内容区宽度"><a href="#修改内容区宽度" class="headerlink" title="修改内容区宽度"></a>修改内容区宽度</h2><p><a href="https://zuiyu1818.cn/posts/NexT_codewidth.html" target="_blank" rel="noopener">NexT | 修改内容区域的宽度</a></p>
-<h2 id="添加文章阴影"><a href="#添加文章阴影" class="headerlink" title="添加文章阴影"></a>添加文章阴影</h2><p><a href="https://blog.csdn.net/mqdxiaoxiao/article/details/93797964" target="_blank" rel="noopener">Hexo博客NexT主题下添加文章边框阴影效果</a></p>
+</li>
+</ol>
+<h2 id="设置超级用户"><a href="#设置超级用户" class="headerlink" title="设置超级用户"></a>设置超级用户</h2><p>ubuntu的su初始密码设置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd</span><br></pre></td></tr></table></figure>
+
+<h2 id="zsh美化终端"><a href="#zsh美化终端" class="headerlink" title="zsh美化终端"></a>zsh美化终端</h2><p><a href="https://www.jianshu.com/p/723c2241e8e7" target="_blank" rel="noopener">安装使用oh-my-zsh（Win10+WSL或Ubuntu）</a></p>
+<h3 id="设zsh为默认shell"><a href="#设zsh为默认shell" class="headerlink" title="设zsh为默认shell"></a>设zsh为默认shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh <span class="comment"># 设置 bash 同理</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="环境变量PATH"><a href="#环境变量PATH" class="headerlink" title="环境变量PATH"></a>环境变量PATH</h3><p>使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的</p>
+<h2 id="开启-ssh-远程连接"><a href="#开启-ssh-远程连接" class="headerlink" title="开启 ssh 远程连接"></a>开启 ssh 远程连接</h2><p>wsl下的ubuntu自带ssh服务有问题需要卸载重装一遍ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重装 openssh-server</span></span><br><span class="line">sudo apt-get remove openssh-server</span><br><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改 shd_config文件</span></span><br><span class="line">sudo vi /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># Port 22 #默认即可，如果有端口占用可以自己修改</span></span><br><span class="line"><span class="comment"># PasswordAuthentication yes # 允许用户名密码方式登录</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启ssh服务</span></span><br><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="apt命令"><a href="#apt命令" class="headerlink" title="apt命令"></a>apt命令</h2><p>[<a href="https://www.cnblogs.com/hk-faith/p/8776471.html" target="_blank" rel="noopener">Ubuntu的apt命令详解</a>]</p>
+<ol>
+<li>搜索软件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  apt-cache  search  package_name</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -474,7 +496,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
           
         </div>
       
@@ -487,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/openresty配置/" rel="next" title="openresty配置">
-                <i class="fa fa-chevron-left"></i> openresty配置
+              <a href="/2019/09/17/openresty安装笔记/" rel="next" title="openresty安装笔记">
+                <i class="fa fa-chevron-left"></i> openresty安装笔记
               </a>
             
           </div>
@@ -496,6 +518,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/17/openresty配置/" rel="prev" title="openresty配置">
+                openresty配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -666,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-常用指令"><span class="nav-number">1.</span> <span class="nav-text">hexo 常用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内文章跳转"><span class="nav-number">2.</span> <span class="nav-text">站内文章跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo安装"><span class="nav-number">3.</span> <span class="nav-text">hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题"><span class="nav-number">4.</span> <span class="nav-text">NexT主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主题"><span class="nav-number">5.</span> <span class="nav-text">默认主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论插件-gitalk"><span class="nav-number">6.</span> <span class="nav-text">评论插件-gitalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内容区宽度"><span class="nav-number">7.</span> <span class="nav-text">修改内容区宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章阴影"><span class="nav-number">8.</span> <span class="nav-text">添加文章阴影</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改更新源"><span class="nav-number">2.</span> <span class="nav-text">修改更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置超级用户"><span class="nav-number">3.</span> <span class="nav-text">设置超级用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh美化终端"><span class="nav-number">4.</span> <span class="nav-text">zsh美化终端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设zsh为默认shell"><span class="nav-number">4.1.</span> <span class="nav-text">设zsh为默认shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量PATH"><span class="nav-number">4.2.</span> <span class="nav-text">环境变量PATH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启-ssh-远程连接"><span class="nav-number">5.</span> <span class="nav-text">开启 ssh 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apt命令"><span class="nav-number">6.</span> <span class="nav-text">apt命令</span></a></li></ol></div>
             
 
           </div>
