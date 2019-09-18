@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[openresty配置]]></title>
     <url>%2F2019%2F09%2F17%2Fopenresty%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步(wsl踩坑)[] openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit]]></content>
+    <content type="text"><![CDATA[环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步wsl踩坑 openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit]]></content>
       <categories>
         <category>分布式</category>
       </categories>
