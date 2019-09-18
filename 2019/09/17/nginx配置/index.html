@@ -898,6 +898,23 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '9a23bf1f97dfb27f7b5a',
+          clientSecret: '2e16edec332bb9abe6deea6f510b7e00d5f56287',
+          repo: 'jarvankuo.github.io',
+          owner: 'JarvanKuo',
+          admin: ['JarvanKuo'],
+          id: md5(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+
   
 
   <script type="text/javascript">
