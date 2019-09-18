@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T08:58:10.000Z">
+<meta property="og:updated_time" content="2019-09-18T11:01:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo笔记">
 <meta name="twitter:description" content="hexo的一些配置和命令 hexo 常用指令1234hexo new &quot;post title with whitespace&quot; // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站  站内文章跳转通过内置的标签插件的语法post_link来实现引用 1&amp;#123;% post_link 文章文件名（不要后缀） 文章标题">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  189
+                  268
                 </span>
               
 
@@ -457,6 +457,11 @@
 <h2 id="评论插件-gitalk"><a href="#评论插件-gitalk" class="headerlink" title="评论插件-gitalk"></a>评论插件-gitalk</h2><p><a href="https://jinfagang.github.io/2018/10/07/%E7%BB%88%E4%BA%8E%EF%BC%81%EF%BC%81%EF%BC%81%E8%AE%B0%E5%BD%95%E5%A6%82%E4%BD%95%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%85%8D%E7%BD%AEgitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">记录如何在hexo next主题下配置gitalk评论系统</a></p>
 <h2 id="修改内容区宽度"><a href="#修改内容区宽度" class="headerlink" title="修改内容区宽度"></a>修改内容区宽度</h2><p><a href="https://zuiyu1818.cn/posts/NexT_codewidth.html" target="_blank" rel="noopener">NexT | 修改内容区域的宽度</a></p>
 <h2 id="添加文章阴影"><a href="#添加文章阴影" class="headerlink" title="添加文章阴影"></a>添加文章阴影</h2><p><a href="https://blog.csdn.net/mqdxiaoxiao/article/details/93797964" target="_blank" rel="noopener">Hexo博客NexT主题下添加文章边框阴影效果</a></p>
+<h2 id="文章摘要设置"><a href="#文章摘要设置" class="headerlink" title="文章摘要设置"></a>文章摘要设置</h2><p><a href="https://blog.csdn.net/lewky_liu/article/details/81277337" target="_blank" rel="noopener">站点首页不显示文章全文</a></p>
+<p>修改配置文件_config.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Automatically Excerpt. Not recommend.</span></span><br><span class="line"><span class="comment"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</span></span><br><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>注：</em></strong>使用<code>&lt;!-- more --&gt;</code>标志来精确控制文章的摘要预览，通常在文章开头写一下概要。</p>
 
       
     </div>
@@ -666,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-常用指令"><span class="nav-number">1.</span> <span class="nav-text">hexo 常用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内文章跳转"><span class="nav-number">2.</span> <span class="nav-text">站内文章跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo安装"><span class="nav-number">3.</span> <span class="nav-text">hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题"><span class="nav-number">4.</span> <span class="nav-text">NexT主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主题"><span class="nav-number">5.</span> <span class="nav-text">默认主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论插件-gitalk"><span class="nav-number">6.</span> <span class="nav-text">评论插件-gitalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内容区宽度"><span class="nav-number">7.</span> <span class="nav-text">修改内容区宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章阴影"><span class="nav-number">8.</span> <span class="nav-text">添加文章阴影</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-常用指令"><span class="nav-number">1.</span> <span class="nav-text">hexo 常用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内文章跳转"><span class="nav-number">2.</span> <span class="nav-text">站内文章跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo安装"><span class="nav-number">3.</span> <span class="nav-text">hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题"><span class="nav-number">4.</span> <span class="nav-text">NexT主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主题"><span class="nav-number">5.</span> <span class="nav-text">默认主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论插件-gitalk"><span class="nav-number">6.</span> <span class="nav-text">评论插件-gitalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内容区宽度"><span class="nav-number">7.</span> <span class="nav-text">修改内容区宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章阴影"><span class="nav-number">8.</span> <span class="nav-text">添加文章阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章摘要设置"><span class="nav-number">9.</span> <span class="nav-text">文章摘要设置</span></a></li></ol></div>
             
 
           </div>
@@ -700,7 +705,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.3k</span>
+    <span title="Site words total count">1.4k</span>
   
 </div>
 

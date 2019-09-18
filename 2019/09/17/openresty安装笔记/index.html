@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="openresty安装，参考安装OpenResty(Nginx+Lua)开发环境 安装步骤：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# 创建目录/usr/servers，以后我们把所有软件安装在此目录mkdir">
+<meta name="description" content="openresty安装在ubuntu下的安装">
 <meta name="keywords" content="openresty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openresty安装笔记">
 <meta property="og:url" content="https://JarvanKuo.github.io/2019/09/17/openresty安装笔记/index.html">
 <meta property="og:site_name" content="JK的技术博客">
-<meta property="og:description" content="openresty安装，参考安装OpenResty(Nginx+Lua)开发环境 安装步骤：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# 创建目录/usr/servers，以后我们把所有软件安装在此目录mkdir">
+<meta property="og:description" content="openresty安装在ubuntu下的安装">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T10:47:28.000Z">
+<meta property="og:updated_time" content="2019-09-18T11:02:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openresty安装笔记">
-<meta name="twitter:description" content="openresty安装，参考安装OpenResty(Nginx+Lua)开发环境 安装步骤：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# 创建目录/usr/servers，以后我们把所有软件安装在此目录mkdir">
+<meta name="twitter:description" content="openresty安装在ubuntu下的安装">
 
 
 
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  488
+                  493
                 </span>
               
 
@@ -445,7 +445,10 @@
       
 
       
-        <p>openresty安装，参考<a href="https://www.iteye.com/blog/jinnianshilongnian-2186270" target="_blank" rel="noopener">安装OpenResty(Nginx+Lua)开发环境</a></p>
+        <p>openresty安装在ubuntu下的安装</p>
+<a id="more"></a>
+
+<p>参考 <a href="https://www.iteye.com/blog/jinnianshilongnian-2186270" target="_blank" rel="noopener">安装OpenResty(Nginx+Lua)开发环境</a></p>
 <h2 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录/usr/servers，以后我们把所有软件安装在此目录</span></span><br><span class="line">mkdir -p /usr/servers  </span><br><span class="line"><span class="built_in">cd</span> /usr/servers/  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl </span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载ngx_openresty-1.7.7.2.tar.gz并解压</span></span><br><span class="line">wget http://openresty.org/download/ngx_openresty-1.7.7.2.tar.gz  </span><br><span class="line">tar -xzvf ngx_openresty-1.7.7.2.tar.gz  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装LuaJIT</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle/LuaJIT-2.1-20150120/  </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 没有安装make的需要先安装</span></span><br><span class="line">    apt install make</span><br><span class="line">    apt install make-guile</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 没安装gcc的需要先执行以下命令</span></span><br><span class="line">	sudo apt-get  build-dep  gcc </span><br><span class="line">	</span><br><span class="line">make clean &amp;&amp; make &amp;&amp; make install  </span><br><span class="line">ln -sf luajit-2.1.0-alpha /usr/<span class="built_in">local</span>/bin/luajit  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载ngx_cache_purge模块，该模块用于清理nginx缓存</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle  </span><br><span class="line">wget https://github.com/FRiCKLE/ngx_cache_purge/archive/2.3.tar.gz  </span><br><span class="line">tar -xvf 2.3.tar.gz  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载nginx_upstream_check_module模块，该模块用于ustream健康检查</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle  </span><br><span class="line">wget https://github.com/yaoweibin/nginx_upstream_check_module/archive/v0.3.0.tar.gz  </span><br><span class="line">tar -xvf v0.3.0.tar.gz   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装ngx_openresty</span></span><br><span class="line"><span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2  </span><br><span class="line">./configure --prefix=/usr/servers --with-http_realip_module  --with-pcre  --with-luajit --add-module=./bundle/ngx_cache_purge-2.3/ --add-module=./bundle/nginx_upstream_check_module-0.3.0/ -j2  </span><br><span class="line">	<span class="comment"># 报错 checking for zlib library ... not found，需要安装 zlib</span></span><br><span class="line">	sudo apt-get install zlib1g-dev</span><br><span class="line">make &amp;&amp; make install  </span><br><span class="line">	<span class="comment"># 报错 recipe for target 'objs/src/event/ngx_event_openssl.o' failed，openssl版本问题，需要安装旧版本</span></span><br><span class="line">	<span class="comment"># 需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控</span></span><br><span class="line">	<span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2/bundle </span><br><span class="line">	wget -O openssl.tar.gz -c https://github.com/openssl/openssl/archive/OpenSSL_1_0_2k.tar.gz</span><br><span class="line">	tar zxf openssl.tar.gz</span><br><span class="line">	mv openssl-OpenSSL_1_0_2k/ openssl</span><br><span class="line">	<span class="comment"># 重新配置 ngx_openresty</span></span><br><span class="line">	<span class="built_in">cd</span> /usr/servers/ngx_openresty-1.7.7.2</span><br><span class="line">	./configure \</span><br><span class="line">	--prefix=/usr/servers \</span><br><span class="line">	--with-http_realip_module  \</span><br><span class="line">	--with-pcre  \</span><br><span class="line">	--with-luajit \</span><br><span class="line">	--add-module=./bundle/ngx_cache_purge-2.3/ \</span><br><span class="line">	--add-module=./bundle/nginx_upstream_check_module-0.3.0/ \</span><br><span class="line">	--with-openssl=./bundle/openssl \</span><br><span class="line">	-j2  </span><br><span class="line">	<span class="comment"># 重新make</span></span><br><span class="line">	make &amp;&amp; make install  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动nginx，访问 http://localhost/ 成功即可</span></span><br><span class="line">/usr/servers/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
 
 <p><em>拓展：</em></p>
@@ -697,7 +700,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">1.3k</span>
+    <span title="Site words total count">1.4k</span>
   
 </div>
 
