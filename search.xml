@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[hexo笔记]]></title>
     <url>%2F2019%2F09%2F18%2Fhexo%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[hexo的一些配置和命令 hexo 常用指令1234hexo new "post title with whitespace" // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站 hexo安装请看(官网)[https://hexo.io/zh-cn/] NexT主题使用流行的NexT，(NexT官网)[http://theme-next.iissnan.com/] 默认主题插件扩展请看(个人网站的功能插件 )[https://hans2936.github.io/2017/10/22/PageLog/] 评论插件-gitalk(记录如何在hexo next主题下配置gitalk评论系统)[https://jinfagang.github.io/2018/10/07/%E7%BB%88%E4%BA%8E%EF%BC%81%EF%BC%81%EF%BC%81%E8%AE%B0%E5%BD%95%E5%A6%82%E4%BD%95%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%85%8D%E7%BD%AEgitalk%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/] 修改内容区宽度(NexT | 修改内容区域的宽度)[https://zuiyu1818.cn/posts/NexT_codewidth.html] 添加文章阴影(Hexo博客NexT主题下添加文章边框阴影效果)[https://blog.csdn.net/mqdxiaoxiao/article/details/93797964]]]></content>
+    <content type="text"><![CDATA[hexo的一些配置和命令 hexo 常用指令1234hexo new "post title with whitespace" // 新增md文章hexo clean // 清除hexo g // 生成静态文件。hexo g -d // 文件生成后立即部署网站 hexo安装请看官网 NexT主题使用流行的NexT，NexT官网 默认主题插件扩展请看个人网站的功能插件 评论插件-gitalk记录如何在hexo next主题下配置gitalk评论系统 修改内容区宽度NexT | 修改内容区域的宽度 添加文章阴影Hexo博客NexT主题下添加文章边框阴影效果]]></content>
       <categories>
         <category>建站</category>
       </categories>
@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[openresty配置]]></title>
     <url>%2F2019%2F09%2F17%2Fopenresty%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步(wsl踩坑)[] openresty安装请参考(安装OpenResty(Nginx+Lua)开发环境)[https://www.iteye.com/blog/jinnianshilongnian-2186270] openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考(openssl版本问题)[https://imququ.com/post/my-nginx-conf.html] Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit]]></content>
+    <content type="text"><![CDATA[环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步(wsl踩坑)[] openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit]]></content>
       <categories>
         <category>分布式</category>
       </categories>
