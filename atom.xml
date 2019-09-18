@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://JarvanKuo.github.io/"/>
-  <updated>2019-09-17T06:13:06.000Z</updated>
+  <updated>2019-09-18T05:27:12.000Z</updated>
   <id>https://JarvanKuo.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo笔记</title>
+    <link href="https://JarvanKuo.github.io/2019/09/18/hexo%E7%AC%94%E8%AE%B0/"/>
+    <id>https://JarvanKuo.github.io/2019/09/18/hexo笔记/</id>
+    <published>2019-09-18T05:14:40.000Z</published>
+    <updated>2019-09-18T05:27:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo的一些配置和命令</p><h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><p>请看(官网)[<a href="https://hexo.io/zh-cn/]" target="_blank" rel="noopener">https://hexo.io/zh-cn/]</a></p><h2 id="NexT主题"><a href="#NexT主题" class="headerlink" title="NexT主题"></a>NexT主题</h2><p>使用流行的NexT，(NexT官网)[<a href="http://theme-next.iissnan.com/]" target="_blank" rel="noopener">http://theme-next.iissnan.com/]</a></p><h2 id="默认主题"><a href="#默认主题" class="headerlink" title="默认主题"></a>默认主题</h2><p>插件扩展请看(个人网站的功能插件 )[<a href="https://hans2936.github.io/2017/10/22/PageLog/]" target="_blank" rel="noopener">https://hans2936.github.io/2017/10/22/PageLog/]</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;hexo的一些配置和命令&lt;/p&gt;
+&lt;h2 id=&quot;hexo安装&quot;&gt;&lt;a href=&quot;#hexo安装&quot; class=&quot;headerlink&quot; title=&quot;hexo安装&quot;&gt;&lt;/a&gt;hexo安装&lt;/h2&gt;&lt;p&gt;请看(官网)[&lt;a href=&quot;https://hexo.io/zh
+      
+    
+    </summary>
+    
+    
+      <category term="建站" scheme="https://JarvanKuo.github.io/categories/%E5%BB%BA%E7%AB%99/"/>
+    
+    
+      <category term="hexo" scheme="https://JarvanKuo.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>nginx配置</title>
     <link href="https://JarvanKuo.github.io/2019/09/17/nginx%E9%85%8D%E7%BD%AE/"/>
     <id>https://JarvanKuo.github.io/2019/09/17/nginx配置/</id>
     <published>2019-09-17T05:50:09.000Z</published>
-    <updated>2019-09-17T06:13:06.000Z</updated>
+    <updated>2019-09-18T05:13:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>nginx配置，结合wsl（windows的linux子系统）</p><h2 id="sh使用zsh后，环境变量需要在-zshrc-配置文件中定义，-etc-profile-是不会生效的"><a href="#sh使用zsh后，环境变量需要在-zshrc-配置文件中定义，-etc-profile-是不会生效的" class="headerlink" title="sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的"></a>sh使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的</h2><h2 id="nginx指定其他配置文件的，停止时也需指定参数"><a href="#nginx指定其他配置文件的，停止时也需指定参数" class="headerlink" title="nginx指定其他配置文件的，停止时也需指定参数"></a>nginx指定其他配置文件的，停止时也需指定参数</h2><p>启动：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -p `<span class="built_in">pwd</span>`/ -c conf/nginx.conf</span><br></pre></td></tr></table></figure><p>停止：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -p `<span class="built_in">pwd</span>`/ -c conf/nginx.conf -s quit</span><br></pre></td></tr></table></figure><h2 id="安装旧版本的问题"><a href="#安装旧版本的问题" class="headerlink" title="安装旧版本的问题"></a>安装旧版本的问题</h2><ol><li><p>openssl版本问题 [<a href="https://imququ.com/post/my-nginx-conf.html]" target="_blank" rel="noopener">https://imququ.com/post/my-nginx-conf.html]</a></p><p> 推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。</p></li></ol><h2 id="wsl-安装-openresty-新版"><a href="#wsl-安装-openresty-新版" class="headerlink" title="wsl 安装 openresty (新版)"></a>wsl 安装 openresty (新版)</h2><ol start="0"><li><p>首选 apt-get 方式安装 [<a href="https://blog.csdn.net/caoshunxin01/article/details/79355659]" target="_blank" rel="noopener">https://blog.csdn.net/caoshunxin01/article/details/79355659]</a></p></li><li><p>缺失 luarocks [<a href="https://www.jianshu.com/p/239d9583d62c]" target="_blank" rel="noopener">https://www.jianshu.com/p/239d9583d62c]</a></p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/openresty/luajit \</span><br><span class="line">   --with-lua=/usr/<span class="built_in">local</span>/openresty/luajit/ \</span><br><span class="line">   --with-lua-include=/usr/<span class="built_in">local</span>/openresty/luajit/include/luajit-2.1</span><br></pre></td></tr></table></figure></li><li><p>缺失 luasocket [<a href="https://blog.csdn.net/songyulong8888/article/details/80363444]" target="_blank" rel="noopener">https://blog.csdn.net/songyulong8888/article/details/80363444]</a></p><p> 利用 </p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install luasocket</span><br></pre></td></tr></table></figure></li></ol><h2 id="wsl-ubuntu-开启-ssh-远程连接"><a href="#wsl-ubuntu-开启-ssh-远程连接" class="headerlink" title="wsl ubuntu 开启 ssh 远程连接"></a>wsl ubuntu 开启 ssh 远程连接</h2><p>自带ssh服务有问题需要先卸载 [<a href="https://www.jianshu.com/p/cd4d604e0b44]" target="_blank" rel="noopener">https://www.jianshu.com/p/cd4d604e0b44]</a></p><h2 id="查找可安装软件-apt-cache-search"><a href="#查找可安装软件-apt-cache-search" class="headerlink" title="查找可安装软件 apt-cache search"></a>查找可安装软件 apt-cache search</h2>]]></content>
     
@@ -35,6 +62,8 @@
     
     </summary>
     
+    
+      <category term="分布式" scheme="https://JarvanKuo.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
     
       <category term="nginx" scheme="https://JarvanKuo.github.io/tags/nginx/"/>
