@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="openresty配置的一些问题总结！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T11:17:54.000Z">
+<meta property="og:updated_time" content="2019-09-24T07:11:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openresty配置">
 <meta name="twitter:description" content="openresty配置的一些问题总结！">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  227
+                  451
                 </span>
               
 
@@ -482,6 +482,47 @@
 
 </li>
 </ol>
+<h3 id="nginx-conf-配置"><a href="#nginx-conf-配置" class="headerlink" title="nginx.conf 配置"></a>nginx.conf 配置</h3><ul>
+<li><p>正则匹配路径</p>
+<table>
+<thead>
+<tr>
+<th align="left">模式</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">location = /uri</td>
+<td align="left">= 表示精确匹配，只有完全匹配上才能生效</td>
+</tr>
+<tr>
+<td align="left">location ^~ /uri</td>
+<td align="left">^~ 开头对URL路径进行前缀匹配，并且在正则之前。</td>
+</tr>
+<tr>
+<td align="left">location ~ pattern</td>
+<td align="left">开头表示区分大小写的正则匹配</td>
+</tr>
+<tr>
+<td align="left">location ~* pattern</td>
+<td align="left">开头表示不区分大小写的正则匹配</td>
+</tr>
+<tr>
+<td align="left">location /uri</td>
+<td align="left">不带任何修饰符，也表示前缀匹配，但是在正则匹配之后</td>
+</tr>
+<tr>
+<td align="left">location /</td>
+<td align="left">通用匹配，任何未匹配到其它location的请求都会匹配到，相当于switch中的default</td>
+</tr>
+</tbody></table>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ ^/api/([-_a-zA-Z0-9]+)</span> &#123;</span><br><span class="line">    <span class="comment"># 准入阶段完成参数验证</span></span><br><span class="line">    <span class="attribute">access_by_lua_file</span>  nginx_test_server/access_check.lua;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#内容生成阶段</span></span><br><span class="line">    <span class="attribute">content_by_lua_file</span> nginx_test_server/<span class="variable">$1</span>.lua;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开发调试时取消缓存</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里设置为 off，是为了避免每次修改之后都要重新 reload 的麻烦。</span></span><br><span class="line"><span class="comment"># 在生产环境上务必确保 lua_code_cache 设置成 on。</span></span><br><span class="line"><span class="attribute">lua_code_cache</span> <span class="literal">off</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 
       
     </div>
@@ -605,7 +646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -616,7 +657,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -627,7 +668,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -695,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl安装"><span class="nav-number">2.</span> <span class="nav-text">wsl安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty安装"><span class="nav-number">3.</span> <span class="nav-text">openresty安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl版本问题"><span class="nav-number">3.1.</span> <span class="nav-text">openssl版本问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lua模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">Lua模块安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty使用"><span class="nav-number">4.</span> <span class="nav-text">openresty使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx常用命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl安装"><span class="nav-number">2.</span> <span class="nav-text">wsl安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty安装"><span class="nav-number">3.</span> <span class="nav-text">openresty安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl版本问题"><span class="nav-number">3.1.</span> <span class="nav-text">openssl版本问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lua模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">Lua模块安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty使用"><span class="nav-number">4.</span> <span class="nav-text">openresty使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf-配置"><span class="nav-number">4.2.</span> <span class="nav-text">nginx.conf 配置</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -729,7 +770,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.1k</span>
+    <span title="Site words total count">2.8k</span>
   
 </div>
 

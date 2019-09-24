@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[openresty配置]]></title>
     <url>%2F2019%2F09%2F17%2Fopenresty%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[openresty配置的一些问题总结！ 环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步 wsl笔记 openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 或者参考 openresty安装笔记 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit]]></content>
+    <content type="text"><![CDATA[openresty配置的一些问题总结！ 环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步 wsl笔记 openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 或者参考 openresty安装笔记 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx.conf 配置 正则匹配路径 模式 含义 location = /uri = 表示精确匹配，只有完全匹配上才能生效 location ^~ /uri ^~ 开头对URL路径进行前缀匹配，并且在正则之前。 location ~ pattern 开头表示区分大小写的正则匹配 location ~* pattern 开头表示不区分大小写的正则匹配 location /uri 不带任何修饰符，也表示前缀匹配，但是在正则匹配之后 location / 通用匹配，任何未匹配到其它location的请求都会匹配到，相当于switch中的default 1234567location ~ ^/api/([-_a-zA-Z0-9]+) &#123; # 准入阶段完成参数验证 access_by_lua_file nginx_test_server/access_check.lua; #内容生成阶段 content_by_lua_file nginx_test_server/$1.lua;&#125; 开发调试时取消缓存 123# 这里设置为 off，是为了避免每次修改之后都要重新 reload 的麻烦。# 在生产环境上务必确保 lua_code_cache 设置成 on。lua_code_cache off;]]></content>
       <categories>
         <category>分布式</category>
       </categories>
@@ -47,12 +47,45 @@
   <entry>
     <title><![CDATA[wsl笔记]]></title>
     <url>%2F2019%2F09%2F17%2Fwsl%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[wsl 下的 ubuntu 系统一些问题总结！ 环境win10 下 wsl 环境安装 ubuntu 修改更新源 备份文件 1sudo cp /etc/apt/sources.list /etc/apt/sources.list.old 使用阿里源 打开文件： 12 sudo vi /etc/apt/sources.list` 整个文件替换成阿里源： 12345678910deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse 更新 12sudo apt-get updatesudo apt-get upgrade 设置超级用户ubuntu的su初始密码设置 1sudo passwd zsh美化终端安装使用oh-my-zsh（Win10+WSL或Ubuntu） 设zsh为默认shell1chsh -s /bin/zsh # 设置 bash 同理 环境变量PATH使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的 开启 ssh 远程连接wsl下的ubuntu自带ssh服务有问题需要卸载重装一遍ssh服务 123456789101112# 重装 openssh-serversudo apt-get remove openssh-serversudo apt-get install openssh-server# 修改 shd_config文件sudo vi /etc/ssh/sshd_config# Port 22 #默认即可，如果有端口占用可以自己修改# PasswordAuthentication yes # 允许用户名密码方式登录# PermitRootLogin yes # 允许管理员ssh登录# 重启ssh服务sudo service ssh restart apt命令[Ubuntu的apt命令详解] 搜索软件 1sudo apt-cache search package_name windows 和 wsl 互相访问文件 打开wsl文件 使用explorer.exe，wsl下切换用户就不能使用这个命令。。。 1explorer.exe . 访问windows文件，使用挂载方式/mnt/ 1cd /mnt/c/Users/Ben/Documents/]]></content>
+    <content type="text"><![CDATA[wsl 下的 ubuntu 系统一些问题总结！ 参考文献： Windows 10生产力提升之WSL实践 在wsl下安装使用sshd全攻略.md 环境win10 下 wsl 环境安装 ubuntu 修改更新源 备份文件 1sudo cp /etc/apt/sources.list /etc/apt/sources.list.old 使用阿里源 打开文件： 12 sudo vi /etc/apt/sources.list` 整个文件替换成阿里源： 12345678910deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse 更新 12sudo apt-get updatesudo apt-get upgrade 设置超级用户ubuntu的su初始密码设置 1sudo passwd zsh美化终端安装使用oh-my-zsh（Win10+WSL或Ubuntu） 设zsh为默认shell1chsh -s /bin/zsh # 设置 bash 同理 环境变量PATH使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的 开启 ssh 远程连接wsl下的ubuntu自带ssh服务有问题需要卸载重装一遍ssh服务 123456789101112# 重装 openssh-serversudo apt-get remove openssh-serversudo apt-get install openssh-server# 修改 shd_config文件sudo vi /etc/ssh/sshd_config# Port 22 #默认即可，如果有端口占用可以自己修改# PasswordAuthentication yes # 允许用户名密码方式登录# PermitRootLogin yes # 允许管理员ssh登录# 重启ssh服务sudo service ssh restart apt命令与问题[Ubuntu的apt命令详解] 搜索软件 1sudo apt-cache search package_name WSL Ubuntu 解决出现 E: Could not read response to hello message from hook …问题 执行以下命令 1sudo rm -rf /etc/apt/apt.conf.d/20snapd.conf windows 和 wsl 互相访问文件 打开wsl文件 使用explorer.exe，wsl下切换用户就不能使用这个命令。。。 1explorer.exe . 访问windows文件，使用挂载方式/mnt/ 1cd /mnt/c/Users/Ben/Documents/ wsl开机没有自启动ssh需要在wsl中手动运行一下： 1sudo service ssh start 由于是wsl内部是类似docker运行的，没有 systemd 服务 重装python 检查python路径： 123456789# 方式一：type -a python# 方式二：ls -l /usr/bin/pythonls -l /usr/bin/python*# 方式三：which python 安装python2、python3 1234# 安装python2$ sudo apt-get install python# 安装python3$ sudo apt-get install python3]]></content>
       <categories>
         <category>linux</category>
       </categories>
       <tags>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SSDB数据库笔记]]></title>
+    <url>%2F2019%2F09%2F17%2FSSDB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[SSDB：一个高性能的支持丰富数据结构的 NoSQL 数据库, 用于替代 Redis. 参考文献： SSDB官网 环境win10 下 wsl 环境 ubuntu 的 ssdb]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SSDB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Fredis%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[redis笔记！ 参考文献： nohup和&amp;使用 环境win10 下 wsl 环境 ubuntu 的 redis Redis安装与使用 下载redis并安装 12345cd /usr/servers/ wget https://github.com/antirez/redis/archive/2.8.19.tar.gz tar -xvf 2.8.19.tar.gz cd redis-2.8.19/ make 后台启动Redis服务器 使用 nohup 和 &amp; 指令： 12nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis.conf &amp;` 查看是否启动成功 1ps -ef | grep redis 进入客户端并测试 123456/usr/servers/redis-2.8.19/src/redis-cli -p 6379 127.0.0.1:6379&gt; set i 1 OK 127.0.0.1:6379&gt; get i "1" 127.0.0.1:6379&gt; quit # quit 退出 redis 客户端]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[markdown笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Fmarkdown%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[markdown总结！ 参考文献： Markdown创建表格 markdown创建表格 极简方式 name 价格 数量 香蕉 $1 5 苹果 $1 6 草莓 $1 7 格式化 name 111 222 333 444 aaa bbb ccc ddd eee fff ggg hhh iii 000]]></content>
+      <categories>
+        <category>编辑器</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
