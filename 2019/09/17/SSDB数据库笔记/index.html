@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="SSDB：一个高性能的支持丰富数据结构的 NoSQL 数据库, 用于替代 Redis.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T07:32:26.000Z">
+<meta property="og:updated_time" content="2019-09-28T07:31:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSDB数据库笔记">
 <meta name="twitter:description" content="SSDB：一个高性能的支持丰富数据结构的 NoSQL 数据库, 用于替代 Redis.">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  42
+                  243
                 </span>
               
 
@@ -451,6 +451,14 @@
 <p>参考文献：</p>
 <p><a href="http://ssdb.io/zh_cn/" target="_blank" rel="noopener">SSDB官网</a></p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>win10 下 wsl 环境 ubuntu 的 ssdb</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>配置文件使用Tab而不是空格做缩排（复制到配置文件后请把空格替换为Tab）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">work_dir = /usr/data/ssdb_8883  </span><br><span class="line">pidfile = /usr/data/ssdb_8883.pid  </span><br><span class="line">  </span><br><span class="line">server:  </span><br><span class="line">        ip: 0.0.0.0  </span><br><span class="line">        port: 8883  </span><br><span class="line">        allow: 127.0.0.1  </span><br><span class="line">        allow: 192.168  </span><br><span class="line">  </span><br><span class="line">replication:  </span><br><span class="line">        binlog: yes  </span><br><span class="line">        sync_speed: -1  </span><br><span class="line">        slaveof:  </span><br><span class="line">                type: sync  </span><br><span class="line">                ip: 127.0.0.1  </span><br><span class="line">                port: 8881  </span><br><span class="line">  </span><br><span class="line">logger:  </span><br><span class="line">        level: error  </span><br><span class="line">        output: /usr/data/ssdb_8883.log  </span><br><span class="line">        rotate:  </span><br><span class="line">                size: 1000000000  </span><br><span class="line">  </span><br><span class="line">leveldb:  </span><br><span class="line">        cache_size: 500  </span><br><span class="line">        block_size: 32  </span><br><span class="line">        write_buffer_size: 64  </span><br><span class="line">        compaction_speed: 1000  </span><br><span class="line">        compression: yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nohup /usr/servers/ssdb-1.8.2/ssdb-server  /usr/chapter7/ssdb_desc_8883.conf &amp;  </span><br><span class="line">ps -aux | grep ssdb <span class="comment"># 命令看是否启动了</span></span><br><span class="line">tail -f nohup.out <span class="comment"># 查看错误信息</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>ssdb-server 是服务器的程序, ssdb-cli 是命令⾏的客户端</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/servers/ssdb-1.8.2/tools/ssdb-cli -p 8888  </span><br><span class="line"><span class="comment"># 因为SSDB支持Redis协议，所以用Redis客户端也可以访问</span></span><br><span class="line">/usr/servers/redis-2.8.19/src/redis-cli  -p 8888</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -491,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/17/wsl笔记/" rel="prev" title="wsl笔记">
-                wsl笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/openresty配置/" rel="prev" title="openresty配置">
+                openresty配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -574,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -596,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -664,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">2.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动服务器"><span class="nav-number">3.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端"><span class="nav-number">4.</span> <span class="nav-text">客户端</span></a></li></ol></div>
             
 
           </div>
@@ -698,7 +706,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.8k</span>
+    <span title="Site words total count">5.1k</span>
   
 </div>
 

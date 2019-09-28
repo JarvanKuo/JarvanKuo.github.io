@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="openresty配置的一些问题总结！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T07:11:28.000Z">
+<meta property="og:updated_time" content="2019-09-28T14:24:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openresty配置">
 <meta name="twitter:description" content="openresty配置的一些问题总结！">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  451
+                  591
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -520,7 +520,21 @@
 </li>
 <li><p>开发调试时取消缓存</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里设置为 off，是为了避免每次修改之后都要重新 reload 的麻烦。</span></span><br><span class="line"><span class="comment"># 在生产环境上务必确保 lua_code_cache 设置成 on。</span></span><br><span class="line"><span class="attribute">lua_code_cache</span> <span class="literal">off</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>http 模块 报错 bad argument #2 to ‘set_keepalive’ (number expected, got nil)</p>
+<p>  参考：<a href="https://blog.csdn.net/miachen520/article/details/91353525" target="_blank" rel="noopener">bad argument #2 to ‘set_keepalive’ (number expected, got nil)的解决办法</a></p>
+<p>  在关联数组中多传一个参数keepalive=false 即</p>
+  <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">method = “GET”,</span><br><span class="line"><span class="built_in">path</span> = requestBody,</span><br><span class="line">keepalive=<span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<h2 id="lua-的一些坑"><a href="#lua-的一些坑" class="headerlink" title="lua 的一些坑"></a>lua 的一些坑</h2><ul>
+<li><p>openresty/lua-resty-redis 的 批量查询 返回值问题</p>
+<p>参考：<a href="https://blog.csdn.net/scdxmoe/article/details/52171720" target="_blank" rel="noopener">nil、null与ngx.null</a></p>
+<p><a href="https://github.com/openresty/lua-resty-redis/blob/master/README.markdown" target="_blank" rel="noopener">官方说明</a></p>
+<p>A non-nil Redis “bulk reply” results in a Lua string as the return value. A nil bulk reply results in a <code>ngx.null</code> return value.</p>
+<p>A nil multi-bulk reply returns in a <code>ngx.null</code> value.</p>
+<p>如果使用批量查询如mget，查不到数据会返回 ngx.null     </p>
 </li>
 </ul>
 
@@ -553,8 +567,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/openresty安装笔记/" rel="next" title="openresty安装笔记">
-                <i class="fa fa-chevron-left"></i> openresty安装笔记
+              <a href="/2019/09/17/SSDB数据库笔记/" rel="next" title="SSDB数据库笔记">
+                <i class="fa fa-chevron-left"></i> SSDB数据库笔记
               </a>
             
           </div>
@@ -563,8 +577,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/18/hexo笔记/" rel="prev" title="hexo笔记">
-                hexo笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/wsl笔记/" rel="prev" title="wsl笔记">
+                wsl笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -736,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl安装"><span class="nav-number">2.</span> <span class="nav-text">wsl安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty安装"><span class="nav-number">3.</span> <span class="nav-text">openresty安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl版本问题"><span class="nav-number">3.1.</span> <span class="nav-text">openssl版本问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lua模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">Lua模块安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty使用"><span class="nav-number">4.</span> <span class="nav-text">openresty使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf-配置"><span class="nav-number">4.2.</span> <span class="nav-text">nginx.conf 配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl安装"><span class="nav-number">2.</span> <span class="nav-text">wsl安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty安装"><span class="nav-number">3.</span> <span class="nav-text">openresty安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl版本问题"><span class="nav-number">3.1.</span> <span class="nav-text">openssl版本问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lua模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">Lua模块安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty使用"><span class="nav-number">4.</span> <span class="nav-text">openresty使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf-配置"><span class="nav-number">4.2.</span> <span class="nav-text">nginx.conf 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lua-的一些坑"><span class="nav-number">5.</span> <span class="nav-text">lua 的一些坑</span></a></li></ol></div>
             
 
           </div>
@@ -770,7 +784,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.8k</span>
+    <span title="Site words total count">5.1k</span>
   
 </div>
 

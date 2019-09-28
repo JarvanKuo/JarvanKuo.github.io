@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="nginx的命令，配置！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T11:12:58.000Z">
+<meta property="og:updated_time" content="2019-09-26T15:04:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx配置">
 <meta name="twitter:description" content="nginx的命令，配置！">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  62
+                  158
                 </span>
               
 
@@ -466,6 +466,15 @@
 
 </li>
 </ol>
+<h2 id="nginx概念"><a href="#nginx概念" class="headerlink" title="nginx概念"></a>nginx概念</h2><ul>
+<li><p>upstream 负载均衡概要</p>
+<p>upstream 是 Nginx 的 HTTP Upstream 模块，这个模块通过一个简单的调度算法来实现客户<br>端 IP 到后端服务器的负载均衡</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> test.net&#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.10.13:80</span>;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.10.14:80</span> down;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.10.15:8009</span> max_fails=<span class="number">3</span> fail_timeout=<span class="number">20s</span>;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">192.168.10.16:8080</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    	<span class="attribute">proxy_pass</span> http://test.net;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
 
       
     </div>
@@ -589,7 +598,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -611,7 +620,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -679,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">1.</span> <span class="nav-text">nginx常用命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">1.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx概念"><span class="nav-number">2.</span> <span class="nav-text">nginx概念</span></a></li></ol></div>
             
 
           </div>
@@ -713,7 +722,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.8k</span>
+    <span title="Site words total count">5.1k</span>
   
 </div>
 

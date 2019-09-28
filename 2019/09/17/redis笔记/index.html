@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="redis笔记！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T07:32:10.000Z">
+<meta property="og:updated_time" content="2019-09-28T07:29:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis笔记">
 <meta name="twitter:description" content="redis笔记！">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  161
+                  1.4k
                 </span>
               
 
@@ -424,7 +424,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -449,7 +449,9 @@
 <a id="more"></a>
 
 <p>参考文献：</p>
+<p><a href="https://www.iteye.com/blog/jinnianshilongnian-2186787" target="_blank" rel="noopener">第三章 Redis/SSDB+Twemproxy安装与使用</a></p>
 <p><a href="https://www.jianshu.com/p/fcc8894923f7" target="_blank" rel="noopener">nohup和&amp;使用</a></p>
+<p><a href="https://www.iteye.com/blog/zjjndnr-2386573" target="_blank" rel="noopener">Twemproxy-缓存代理分片机制</a></p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>win10 下 wsl 环境 ubuntu 的 redis</p>
 <h2 id="Redis安装与使用"><a href="#Redis安装与使用" class="headerlink" title="Redis安装与使用"></a>Redis安装与使用</h2><ol>
 <li><p>下载redis并安装</p>
@@ -468,19 +470,78 @@
 <ol start="4">
 <li><p>进入客户端并测试</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/usr/servers/redis-2.8.19/src/redis-cli  -p 6379  </span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">set</span> i 1  </span><br><span class="line">OK  </span><br><span class="line">127.0.0.1:6379&gt; get i  </span><br><span class="line"><span class="string">"1"</span> </span><br><span class="line">127.0.0.1:6379&gt; quit  <span class="comment"># quit 退出 redis 客户端</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>redis客户端显示中文</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli  -- raw  <span class="comment"># 默认redis不转义中文的，需要加上 --raw</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>redis-cli查看所有的keys及清空所有的数据</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keys * <span class="comment"># 查看所有keys</span></span><br><span class="line">flushall  <span class="comment"># 清空所有数据</span></span><br></pre></td></tr></table></figure>
 
 
 
+</li>
+</ol>
+<h2 id="Redis主从"><a href="#Redis主从" class="headerlink" title="Redis主从"></a>Redis主从</h2><ol>
+<li><p>基本设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#端口设置，默认6379  </span><br><span class="line">port 6379  </span><br><span class="line">#日志文件，默认/dev/null  </span><br><span class="line">logfile &quot;&quot;</span><br><span class="line"></span><br><span class="line">#内存大小对应关系  </span><br><span class="line"># 1k =&gt; 1000 bytes  </span><br><span class="line"># 1kb =&gt; 1024 bytes  </span><br><span class="line"># 1m =&gt; 1000000 bytes  </span><br><span class="line"># 1mb =&gt; 1024*1024 bytes  </span><br><span class="line"># 1g =&gt; 1000000000 bytes  </span><br><span class="line"># 1gb =&gt; 1024*1024*1024 bytes  </span><br><span class="line"></span><br><span class="line">#设置Redis占用100mb的大小  </span><br><span class="line">maxmemory  100mb  </span><br><span class="line"></span><br><span class="line">#如果内存满了就需要按照如相应算法进行删除过期的/最老的  </span><br><span class="line">#volatile-lru 根据LRU算法移除设置了过期的key  </span><br><span class="line">#allkeys-lru  根据LRU算法移除任何key(包含那些未设置过期时间的key)  </span><br><span class="line">#volatile-random/allkeys-&gt;random 使用随机算法而不是LRU进行删除  </span><br><span class="line">#volatile-ttl 根据Time-To-Live移除即将过期的key   </span><br><span class="line">#noeviction   永不过期，而是报错  </span><br><span class="line">maxmemory-policy volatile-lru  </span><br><span class="line"></span><br><span class="line">#Redis并不是真正的LRU/TTL，而是基于采样进行移除的，即如采样10个数据移除其中最老的/即将过期的  </span><br><span class="line">maxmemory-samples 10</span><br></pre></td></tr></table></figure>
 
 
 
+</li>
+</ol>
+<ol start="2">
+<li><p>Redis主从</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#在配置文件中挂载主从，不推荐这种方式，我们实际应用时Redis可能是会宕机的  </span><br><span class="line">slaveof masterIP masterPort  </span><br><span class="line">#从是否只读，默认yes  </span><br><span class="line">slave-read-only yes  </span><br><span class="line">#当从失去与主的连接或者复制正在进行时，从是响应客户端（可能返回过期的数据）还是返回“SYNC with master in progress”错误，默认yes响应客户端  </span><br><span class="line">slave-serve-stale-data yes  </span><br><span class="line">#从库按照默认10s的周期向主库发送PING测试连通性  </span><br><span class="line">repl-ping-slave-period 10  </span><br><span class="line">#设置复制超时时间（SYNC期间批量I/O传输、PING的超时时间），确保此值大于repl-ping-slave-period  </span><br><span class="line">#repl-timeout 60  </span><br><span class="line">#当从断开与主的连接时的复制缓存区，仅当第一个从断开时创建一个，缓存区越大从断开的时间可以持续越长  </span><br><span class="line"># repl-backlog-size 1mb  </span><br><span class="line">#当从与主断开持续多久时清空复制缓存区，此时从就需要全量复制了，如果设置为0将永不清空    </span><br><span class="line"># repl-backlog-ttl 3600  </span><br><span class="line">#slave客户端缓存区，如果缓存区超过256mb将直接断开与从的连接，如果持续60秒超过64mb也会断开与从的连接  </span><br><span class="line">client-output-buffer-limit slave 256mb 64mb 60</span><br></pre></td></tr></table></figure>
+
+<p>设置主从</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/servers/redis-2.8.19  </span><br><span class="line">cp redis.conf redis_6660.conf  </span><br><span class="line">cp redis.conf redis_6661.conf  </span><br><span class="line"><span class="comment"># 将端口分别改为port 6660和port 6661</span></span><br><span class="line">vim redis_6660.conf  </span><br><span class="line">vim redis_6661.conf  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">nohup /usr/servers/redis-2.8.19/src/redis-server  /usr/servers/redis-2.8.19/redis_6660.conf &amp;  </span><br><span class="line">nohup /usr/servers/redis-2.8.19/src/redis-server  /usr/servers/redis-2.8.19/redis_6661.conf &amp; </span><br><span class="line"><span class="comment"># 查看是否启动成功</span></span><br><span class="line">ps -aux | grep redis  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入从客户端，挂主（不在配置文件设置 slaveof masterIP masterPort ）</span></span><br><span class="line">/usr/servers/redis-2.8.19/src/redis-cli  -p 6661  </span><br><span class="line">127.0.0.1:6661&gt; slaveof 127.0.0.1 6660  </span><br><span class="line">OK  </span><br><span class="line">127.0.0.1:6661&gt; info replication  </span><br><span class="line"><span class="comment"># Replication  </span></span><br><span class="line">role:slave </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Redis持久化</p>
+<p>为了防止数据丢失，可以挂载一个从（叶子节点）只进行持久化存储工作。</p>
+<p>Redis持久化有RDB快照模式和AOF追加模式。</p>
+</li>
+<li><p>Redis动态调整配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6660&gt; config get maxmemory  </span><br><span class="line">1) <span class="string">"maxmemory"</span>  </span><br><span class="line">2) <span class="string">"10485760"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调整配置值</span></span><br><span class="line">127.0.0.1:6660&gt; config <span class="built_in">set</span> maxmemory 20971520  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 上述命令重启redis后该配置会丢失，可以执行如下命令重写配置文件</span></span><br><span class="line">127.0.0.1:6660&gt; config rewrite</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Redis集群"><a href="#Redis集群" class="headerlink" title="Redis集群"></a>Redis集群</h2><p>一旦涉及到一台物理机无法存储的情况就需要考虑使用分片机制将数据存储到多台服务器，可以说是Redis集群。</p>
+<p>利用 Twemproxy 实现分片、减少连接数、Hash Tag 分片逻辑。</p>
+<h3 id="Twemproxy-代理"><a href="#Twemproxy-代理" class="headerlink" title="Twemproxy 代理"></a>Twemproxy 代理</h3><ol>
+<li><p>Twemproxy 配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">vim /usr/servers/twemproxy-0.4.0/conf/nutcracker.yml</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server1:</span></span><br><span class="line"><span class="attr">  listen:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:1111</span>  <span class="comment">## 监听地址和端口</span></span><br><span class="line"><span class="attr">  hash:</span> <span class="string">fnv1a_64</span>  <span class="comment">## 散列算法</span></span><br><span class="line"><span class="attr">  distribution:</span> <span class="string">ketama</span>  <span class="comment">## 分片的算法，有ketama（一致性hash）、module（取模）、random（随机）三种算法</span></span><br><span class="line"><span class="comment">#  auto_eject_hosts: true  ## 是否在节点无法响应时自动从服务器列表中剔除，重新响应时自动加入服务器列表中</span></span><br><span class="line"><span class="comment">#  timeout: 1000</span></span><br><span class="line"><span class="attr">  hash_tag:</span> <span class="string">"::"</span></span><br><span class="line"><span class="attr">  redis:</span> <span class="literal">true</span>  <span class="comment">## 后端代理的是否为redis</span></span><br><span class="line"><span class="attr">  servers:</span></span><br><span class="line"><span class="bullet">   -</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:6660:1</span> <span class="string">server1</span></span><br><span class="line"><span class="bullet">   -</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:6661:1</span> <span class="string">server2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Twemproxy 启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/servers/twemproxy-0.4.0/src/nutcracker  -d -c /usr/servers/twemproxy-0.4.0/conf/nutcracker.yml</span><br><span class="line">ps -aux | grep nutcracker</span><br><span class="line"><span class="comment"># 启动 Redis 客户端对应端口，查看是否代理成功</span></span><br><span class="line">/usr/servers/redis-2.8.19/src/redis-cli  -p 1111</span><br></pre></td></tr></table></figure>
+
+<p>或者配置启动/重启/停止脚本方便操作 </p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/servers/twemproxy-0.4.0/scripts/nutcracker.init   </span><br><span class="line">vim /usr/servers/twemproxy-0.4.0/scripts/nutcracker.init</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ul>
+<li><p>将OPTIONS改为 OPTIONS=”-d -c /usr/local/twemproxy/conf/nutcracker.yml”</p>
+</li>
+<li><p>注释掉. /etc/rc.d/init.d/functions；</p>
+</li>
+<li><p>将daemon –user ${USER} ${prog} $OPTIONS改为${prog} $OPTIONS；</p>
+<p>[报错]：若nutcracker没设置为全局变量，则会报此错</p>
+<p> nutcracker: command not found</p>
+<p>写了全路径：/usr/servers/twemproxy-0.4.0/src/${prog} $OPTIONS</p>
+</li>
+<li><p>将killproc改为killall。</p>
+<p>这样就可以使用如下脚本进行启动、重启、停止了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nutcracker.init &#123;start|stop|status|restart|reload|condrestart&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
 
 </li>
-</ol>
+</ul>
 
       
     </div>
@@ -604,7 +665,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -626,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -694,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis安装与使用"><span class="nav-number">2.</span> <span class="nav-text">Redis安装与使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis安装与使用"><span class="nav-number">2.</span> <span class="nav-text">Redis安装与使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis主从"><span class="nav-number">3.</span> <span class="nav-text">Redis主从</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis集群"><span class="nav-number">4.</span> <span class="nav-text">Redis集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Twemproxy-代理"><span class="nav-number">4.1.</span> <span class="nav-text">Twemproxy 代理</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -728,7 +789,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.8k</span>
+    <span title="Site words total count">5.1k</span>
   
 </div>
 
