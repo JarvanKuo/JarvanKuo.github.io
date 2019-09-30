@@ -12,14 +12,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[atlas笔记]]></title>
-    <url>%2F2019%2F09%2F17%2Fatlas%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[atlas：mysql-proxy扩展，mysql中间件，可以实现分表、分库（sharding版本）、读写分离、数据库连接池等功能！ Atlas类似于Twemproxy，是Qihoo 360基于Mysql Proxy开发的一个Mysql中间件，据称每天承载读写请求数达几十亿，可以实现分表、分库（sharding版本）、读写分离、数据库连接池等功能，缺点是没有实现跨库分表功能，需要在客户端使用分库逻辑，目前Atlas不活跃 参考文献： 环境win10 下 wsl 环境 ubuntu 的 atlas Mysql+Atlas配置 ubuntu 下安装 Atlas 源码安装方式：请参考第六章 Web开发实战1——HTTP服务 源码编译方法不行的话，直接下载DEB包后用dpkg -i安装即可，注意：旧版本才有DEB包 12wget https://github.com/Qihoo360/Atlas/releases/download/2.2/Atlas-2.2-debian7.0-x86_64.debdpkg -i Atlas-2.2-debian7.0-x86_64.deb ubuntu 下启动 Atlas 缺失 libmysqlclient.so.18 参考：启动zabbix报缺少libmysqlclient.so.18，请自行下载： 123456# 先查找一下whereis libmysqlclient.so.18# 如果存在则软连接到库路径$ ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib64/libmysqlclient.so.18# 没有则下载后链接wget -O /usr/lib/libmysqlclient.so.18 http://files.directadmin.com/services/es_7.0_64/libmysqlclient.so.18 atlas配置 1vim /usr/local/mysql-proxy/conf/chapter6.cnf Atlas启动/重启/停止 12# chapter6 即上述的 chapter6.cnf/usr/local/mysql-proxy/bin/mysql-proxyd chapter6 &#123; start | restart | stop &#125; atlas管理 12mysql -h127.0.0.1 -P1113 -uadmin -p123456 SELECT * FROM help # 查看帮助 atlas 客户端 1234567891011# 通过代理端口进入客户端mysql -h127.0.0.1 -P1112 -uroot -p123456use chapter6; insert into ad values(1 '测试1); insert into ad values(2, '测试2'); insert into ad values(3 '测试3); select * from ad where sku_id=1; select * from ad where sku_id=2; #通过如下sql可以看到实际的分表结果 select * from ad_0; select * from ad_1;]]></content>
+    <title><![CDATA[API接口安全处理]]></title>
+    <url>%2F2019%2F09%2F17%2FAPI%E6%8E%A5%E5%8F%A3%E5%AE%89%E5%85%A8%E5%A4%84%E7%90%86%2F</url>
+    <content type="text"><![CDATA[开放API接口安全处理！ 参考文献： 公钥，私钥和数字签名这样最好理解 (转载) 概念存在问题： 数据窃取 数据篡改 数据泄露 对应解决方法： 加密：RSA/DES 混淆算法：MD5 令牌：TOKEN 加密 对称 DES AES 非对称（公私钥） RSA 作用： - 加密：公钥加密-&gt;私钥解密 - 签名：私钥加密-&gt;公钥解密（私钥数字签名，公钥验证身份） MD5 Message Digest Algorithm MD5（中文名为消息摘要算法第五版）为计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护。 MD5算法特点： 压缩性：任意长度的数据，算出的MD5值长度都是固定的。 容易计算：从原数据计算出MD5值很容易。 抗修改性：对原数据进行任何改动，哪怕只修改1个字节，所得到的MD5值都有很大区别。 强抗碰撞：已知原数据和其MD5值，想找到一个具有相同MD5值的数据（即伪造数据）是非常困难的。 原理上不能破解，不可逆算法 但是有些数字可以由彩虹表（数据非常庞大）的碰撞来获取 MD5加盐 MD5(“”+””+salt) 应用场景 接口规定根据那些字段生成MD5 接口获取第三方调用者的参数来生成对应的MD5和传入的MD5比较 可以校验表单数据的完整性，防篡改 Token通常在登录时获取，判断用户是否登录状态 开放api参数 id主键不要设置成自增序列 自增序列会容易给轮询，爬虫 重复提交，恶意调用场景：交易类，订单类，有效期，幂等性 返回服务器时间戳参数，调用时传入，与当前服务器时间比较，有效期内才通过 随机数 日志验证码短信类：图形验证码 注册下发短信：没有用户信息，无法从业务上限制，只能弄人机交互的验证码]]></content>
       <categories>
-        <category>数据库</category>
+        <category>安全</category>
       </categories>
       <tags>
-        <tag>atlas</tag>
+        <tag>加解密</tag>
       </tags>
   </entry>
   <entry>
@@ -36,7 +36,7 @@
   <entry>
     <title><![CDATA[nginx配置]]></title>
     <url>%2F2019%2F09%2F17%2Fnginx%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[nginx的命令，配置！ nginx常用命令 测试配置文件 1nginx -t 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx概念 upstream 负载均衡概要 upstream 是 Nginx 的 HTTP Upstream 模块，这个模块通过一个简单的调度算法来实现客户端 IP 到后端服务器的负载均衡 123456789101112upstream test.net&#123; ip_hash; server 192.168.10.13:80; server 192.168.10.14:80 down; server 192.168.10.15:8009 max_fails=3 fail_timeout=20s; server 192.168.10.16:8080;&#125;server &#123; location / &#123; proxy_pass http://test.net; &#125;&#125;]]></content>
+    <content type="text"><![CDATA[nginx的命令，配置！ nginx工作原理Nginx工作原理（Master+Worker） nginx常用命令 测试配置文件 1nginx -t 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx概念 upstream 负载均衡概要 upstream 是 Nginx 的 HTTP Upstream 模块，这个模块通过一个简单的调度算法来实现客户端 IP 到后端服务器的负载均衡 123456789101112upstream test.net&#123; ip_hash; server 192.168.10.13:80; server 192.168.10.14:80 down; server 192.168.10.15:8009 max_fails=3 fail_timeout=20s; server 192.168.10.16:8080;&#125;server &#123; location / &#123; proxy_pass http://test.net; &#125;&#125;]]></content>
       <categories>
         <category>分布式</category>
       </categories>
@@ -56,15 +56,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[openresty配置]]></title>
-    <url>%2F2019%2F09%2F17%2Fopenresty%E9%85%8D%E7%BD%AE%2F</url>
-    <content type="text"><![CDATA[openresty配置的一些问题总结！ 环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步 wsl笔记 openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 或者参考 openresty安装笔记 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx.conf 配置 正则匹配路径 模式 含义 location = /uri = 表示精确匹配，只有完全匹配上才能生效 location ^~ /uri ^~ 开头对URL路径进行前缀匹配，并且在正则之前。 location ~ pattern 开头表示区分大小写的正则匹配 location ~* pattern 开头表示不区分大小写的正则匹配 location /uri 不带任何修饰符，也表示前缀匹配，但是在正则匹配之后 location / 通用匹配，任何未匹配到其它location的请求都会匹配到，相当于switch中的default 1234567location ~ ^/api/([-_a-zA-Z0-9]+) &#123; # 准入阶段完成参数验证 access_by_lua_file nginx_test_server/access_check.lua; #内容生成阶段 content_by_lua_file nginx_test_server/$1.lua;&#125; 开发调试时取消缓存 123# 这里设置为 off，是为了避免每次修改之后都要重新 reload 的麻烦。# 在生产环境上务必确保 lua_code_cache 设置成 on。lua_code_cache off; http 模块 报错 bad argument #2 to ‘set_keepalive’ (number expected, got nil) 参考：bad argument #2 to ‘set_keepalive’ (number expected, got nil)的解决办法 在关联数组中多传一个参数keepalive=false 即 12345&#123;method = “GET”,path = requestBody,keepalive=false&#125; lua 的一些坑 openresty/lua-resty-redis 的 批量查询 返回值问题 参考：nil、null与ngx.null 官方说明 A non-nil Redis “bulk reply” results in a Lua string as the return value. A nil bulk reply results in a ngx.null return value. A nil multi-bulk reply returns in a ngx.null value. 如果使用批量查询如mget，查不到数据会返回 ngx.null]]></content>
-      <categories>
-        <category>分布式</category>
-      </categories>
-      <tags>
-        <tag>openresty</tag>
-      </tags>
+    <title></title>
+    <url>%2F2019%2F09%2F17%2Ftemplate%2F</url>
+    <content type="text"><![CDATA[！ 参考文献： ## ##]]></content>
   </entry>
   <entry>
     <title><![CDATA[SSDB数据库笔记]]></title>
@@ -78,14 +72,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[redis笔记]]></title>
-    <url>%2F2019%2F09%2F17%2Fredis%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[redis笔记！ 参考文献： 第三章 Redis/SSDB+Twemproxy安装与使用 nohup和&amp;使用 Twemproxy-缓存代理分片机制 环境win10 下 wsl 环境 ubuntu 的 redis Redis安装与使用 下载redis并安装 12345cd /usr/servers/ wget https://github.com/antirez/redis/archive/2.8.19.tar.gz tar -xvf 2.8.19.tar.gz cd redis-2.8.19/ make 后台启动Redis服务器 使用 nohup 和 &amp; 指令： 12nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis.conf &amp;` 查看是否启动成功 1ps -ef | grep redis 进入客户端并测试 123456/usr/servers/redis-2.8.19/src/redis-cli -p 6379 127.0.0.1:6379&gt; set i 1 OK 127.0.0.1:6379&gt; get i "1" 127.0.0.1:6379&gt; quit # quit 退出 redis 客户端 redis客户端显示中文 1./redis-cli -- raw # 默认redis不转义中文的，需要加上 --raw redis-cli查看所有的keys及清空所有的数据 12keys * # 查看所有keysflushall # 清空所有数据 Redis主从 基本设置 1234567891011121314151617181920212223242526#端口设置，默认6379 port 6379 #日志文件，默认/dev/null logfile &quot;&quot;#内存大小对应关系 # 1k =&gt; 1000 bytes # 1kb =&gt; 1024 bytes # 1m =&gt; 1000000 bytes # 1mb =&gt; 1024*1024 bytes # 1g =&gt; 1000000000 bytes # 1gb =&gt; 1024*1024*1024 bytes #设置Redis占用100mb的大小 maxmemory 100mb #如果内存满了就需要按照如相应算法进行删除过期的/最老的 #volatile-lru 根据LRU算法移除设置了过期的key #allkeys-lru 根据LRU算法移除任何key(包含那些未设置过期时间的key) #volatile-random/allkeys-&gt;random 使用随机算法而不是LRU进行删除 #volatile-ttl 根据Time-To-Live移除即将过期的key #noeviction 永不过期，而是报错 maxmemory-policy volatile-lru #Redis并不是真正的LRU/TTL，而是基于采样进行移除的，即如采样10个数据移除其中最老的/即将过期的 maxmemory-samples 10 Redis主从 12345678910111213141516#在配置文件中挂载主从，不推荐这种方式，我们实际应用时Redis可能是会宕机的 slaveof masterIP masterPort #从是否只读，默认yes slave-read-only yes #当从失去与主的连接或者复制正在进行时，从是响应客户端（可能返回过期的数据）还是返回“SYNC with master in progress”错误，默认yes响应客户端 slave-serve-stale-data yes #从库按照默认10s的周期向主库发送PING测试连通性 repl-ping-slave-period 10 #设置复制超时时间（SYNC期间批量I/O传输、PING的超时时间），确保此值大于repl-ping-slave-period #repl-timeout 60 #当从断开与主的连接时的复制缓存区，仅当第一个从断开时创建一个，缓存区越大从断开的时间可以持续越长 # repl-backlog-size 1mb #当从与主断开持续多久时清空复制缓存区，此时从就需要全量复制了，如果设置为0将永不清空 # repl-backlog-ttl 3600 #slave客户端缓存区，如果缓存区超过256mb将直接断开与从的连接，如果持续60秒超过64mb也会断开与从的连接 client-output-buffer-limit slave 256mb 64mb 60 设置主从 123456789101112131415161718192021cd /usr/servers/redis-2.8.19 cp redis.conf redis_6660.conf cp redis.conf redis_6661.conf # 将端口分别改为port 6660和port 6661vim redis_6660.conf vim redis_6661.conf # 启动nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis_6660.conf &amp; nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis_6661.conf &amp; # 查看是否启动成功ps -aux | grep redis # 进入从客户端，挂主（不在配置文件设置 slaveof masterIP masterPort ）/usr/servers/redis-2.8.19/src/redis-cli -p 6661 127.0.0.1:6661&gt; slaveof 127.0.0.1 6660 OK 127.0.0.1:6661&gt; info replication # Replication role:slave ... Redis持久化 为了防止数据丢失，可以挂载一个从（叶子节点）只进行持久化存储工作。 Redis持久化有RDB快照模式和AOF追加模式。 Redis动态调整配置 123456789127.0.0.1:6660&gt; config get maxmemory 1) "maxmemory" 2) "10485760"# 调整配置值127.0.0.1:6660&gt; config set maxmemory 20971520 # 上述命令重启redis后该配置会丢失，可以执行如下命令重写配置文件127.0.0.1:6660&gt; config rewrite Redis集群一旦涉及到一台物理机无法存储的情况就需要考虑使用分片机制将数据存储到多台服务器，可以说是Redis集群。 利用 Twemproxy 实现分片、减少连接数、Hash Tag 分片逻辑。 Twemproxy 代理 Twemproxy 配置 12# 配置文件vim /usr/servers/twemproxy-0.4.0/conf/nutcracker.yml 1234567891011server1: listen: 127.0.0.1:1111 ## 监听地址和端口 hash: fnv1a_64 ## 散列算法 distribution: ketama ## 分片的算法，有ketama（一致性hash）、module（取模）、random（随机）三种算法# auto_eject_hosts: true ## 是否在节点无法响应时自动从服务器列表中剔除，重新响应时自动加入服务器列表中# timeout: 1000 hash_tag: "::" redis: true ## 后端代理的是否为redis servers: - 127.0.0.1:6660:1 server1 - 127.0.0.1:6661:1 server2 Twemproxy 启动 1234/usr/servers/twemproxy-0.4.0/src/nutcracker -d -c /usr/servers/twemproxy-0.4.0/conf/nutcracker.ymlps -aux | grep nutcracker# 启动 Redis 客户端对应端口，查看是否代理成功/usr/servers/redis-2.8.19/src/redis-cli -p 1111 或者配置启动/重启/停止脚本方便操作 12chmod +x /usr/servers/twemproxy-0.4.0/scripts/nutcracker.init vim /usr/servers/twemproxy-0.4.0/scripts/nutcracker.init 将OPTIONS改为 OPTIONS=”-d -c /usr/local/twemproxy/conf/nutcracker.yml” 注释掉. /etc/rc.d/init.d/functions； 将daemon –user ${USER} ${prog} $OPTIONS改为${prog} $OPTIONS； [报错]：若nutcracker没设置为全局变量，则会报此错 nutcracker: command not found 写了全路径：/usr/servers/twemproxy-0.4.0/src/${prog} $OPTIONS 将killproc改为killall。 这样就可以使用如下脚本进行启动、重启、停止了。 1nutcracker.init &#123;start|stop|status|restart|reload|condrestart&#125;]]></content>
+    <title><![CDATA[openresty配置]]></title>
+    <url>%2F2019%2F09%2F17%2Fopenresty%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[openresty配置的一些问题总结！ 环境 win10下的linux子系统ubuntu（wsl） openresty版本：ngx_openresty-1.7.7.2.tar.gz wsl安装请移步 wsl笔记 openresty安装请参考安装OpenResty(Nginx+Lua)开发环境 或者参考 openresty安装笔记 openssl版本问题需要指定旧版本，推荐在编译 Nginx 时指定 OpenSSL 源码目录，而不是使用系统自带的版本，这样更可控。 参考openssl版本问题 Lua模块安装 安装 LuaRocks LuaRocks: Lua 的模块安装和部署工具 1apt-get install luarocks 安装 luasocket lua 远程调试引入的 require(&quot;mobdebug&quot;).start() 需要 socket 注：Lua 的 Remote Debug 远程调试 现在还搞不定，此处占个坑。 1luarocks install luasocket openresty使用nginx常用命令 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx.conf 配置 正则匹配路径 模式 含义 location = /uri = 表示精确匹配，只有完全匹配上才能生效 location ^~ /uri ^~ 开头对URL路径进行前缀匹配，并且在正则之前。 location ~ pattern 开头表示区分大小写的正则匹配 location ~* pattern 开头表示不区分大小写的正则匹配 location /uri 不带任何修饰符，也表示前缀匹配，但是在正则匹配之后 location / 通用匹配，任何未匹配到其它location的请求都会匹配到，相当于switch中的default 1234567location ~ ^/api/([-_a-zA-Z0-9]+) &#123; # 准入阶段完成参数验证 access_by_lua_file nginx_test_server/access_check.lua; #内容生成阶段 content_by_lua_file nginx_test_server/$1.lua;&#125; 开发调试时取消缓存 123# 这里设置为 off，是为了避免每次修改之后都要重新 reload 的麻烦。# 在生产环境上务必确保 lua_code_cache 设置成 on。lua_code_cache off; http 模块 报错 bad argument #2 to ‘set_keepalive’ (number expected, got nil) 参考：bad argument #2 to ‘set_keepalive’ (number expected, got nil)的解决办法 在关联数组中多传一个参数keepalive=false 即 12345&#123;method = “GET”,path = requestBody,keepalive=false&#125; lua 的一些坑 openresty/lua-resty-redis 的 批量查询 返回值问题 参考：nil、null与ngx.null 官方说明 A non-nil Redis “bulk reply” results in a Lua string as the return value. A nil bulk reply results in a ngx.null return value. A nil multi-bulk reply returns in a ngx.null value. 如果使用批量查询如mget，查不到数据会返回 ngx.null OpenResty缓存需要先在 nginx.conf 里面的修改 ，这个 cache 是 Nginx 所有 worker 之间共享的 1lua_shared_dict my_cache 128m;]]></content>
       <categories>
-        <category>redis</category>
+        <category>分布式</category>
       </categories>
       <tags>
-        <tag>redis</tag>
+        <tag>openresty</tag>
       </tags>
   </entry>
   <entry>
@@ -108,6 +102,51 @@
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[atlas笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Fatlas%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[atlas：mysql-proxy扩展，mysql中间件，可以实现分表、分库（sharding版本）、读写分离、数据库连接池等功能！ Atlas类似于Twemproxy，是Qihoo 360基于Mysql Proxy开发的一个Mysql中间件，据称每天承载读写请求数达几十亿，可以实现分表、分库（sharding版本）、读写分离、数据库连接池等功能，缺点是没有实现跨库分表功能，需要在客户端使用分库逻辑，目前Atlas不活跃 参考文献： 环境win10 下 wsl 环境 ubuntu 的 atlas Mysql+Atlas配置 ubuntu 下安装 Atlas 源码安装方式：请参考第六章 Web开发实战1——HTTP服务 源码编译方法不行的话，直接下载DEB包后用dpkg -i安装即可，注意：旧版本才有DEB包 12wget https://github.com/Qihoo360/Atlas/releases/download/2.2/Atlas-2.2-debian7.0-x86_64.debdpkg -i Atlas-2.2-debian7.0-x86_64.deb ubuntu 下启动 Atlas 缺失 libmysqlclient.so.18 参考：启动zabbix报缺少libmysqlclient.so.18，请自行下载： 123456# 先查找一下whereis libmysqlclient.so.18# 如果存在则软连接到库路径$ ln -s /usr/local/mysql/lib/libmysqlclient.so.18 /usr/lib64/libmysqlclient.so.18# 没有则下载后链接wget -O /usr/lib/libmysqlclient.so.18 http://files.directadmin.com/services/es_7.0_64/libmysqlclient.so.18 atlas配置 1vim /usr/local/mysql-proxy/conf/chapter6.cnf Atlas启动/重启/停止 12# chapter6 即上述的 chapter6.cnf/usr/local/mysql-proxy/bin/mysql-proxyd chapter6 &#123; start | restart | stop &#125; atlas管理 12mysql -h127.0.0.1 -P1113 -uadmin -p123456 SELECT * FROM help # 查看帮助 atlas 客户端 1234567891011# 通过代理端口进入客户端mysql -h127.0.0.1 -P1112 -uroot -p123456use chapter6; insert into ad values(1 '测试1); insert into ad values(2, '测试2'); insert into ad values(3 '测试3); select * from ad where sku_id=1; select * from ad where sku_id=2; #通过如下sql可以看到实际的分表结果 select * from ad_0; select * from ad_1;]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>atlas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ForkJoin框架]]></title>
+    <url>%2F2019%2F09%2F17%2FForkJoin%E6%A1%86%E6%9E%B6%2F</url>
+    <content type="text"><![CDATA[ForkJoin框架概要！ 参考文献： Java–8–新特性–串并行流与ForkJoin框架 ForkJoin框架概念Fork/Join框架：在必要的情况下，将一个大任务，进行拆分（fork） 成若干个子任务（拆到不能再拆，这里就是指我们制定的拆分的临界值），再将一个个小任务的结果进行join汇总。 Fork/Join与传统线程池的区别Fork/Join采用“工作窃取模式”，当执行新的任务时他可以将其拆分成更小的任务执行，并将小任务加到线程队列中，然后再从一个随即线程中偷一个并把它加入自己的队列中。]]></content>
+      <categories>
+        <category>分布式</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>ForkJoin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Fspring%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[spring的一些坑！ 参考文献： spring容器 Spring中自己new出来的对象不能自动注入对象和属性 原因 @Autowired注入时是将类交给Springboot管理，而new出来的实例脱离了Springboot的管理，两个东西不在一个管理者管理下，所以没法联系在一起，@Autowired注入就会为null。 解决方法 不要用new的方式实例化，也采用注解的方式，在需要new的实例类上加@Component注解，通过注入的方式使用实例化类。 使用ApplicationContextAware和反射方式获取容器的bean重新set进去 参考：自己new的对象怎么注入spring管理的对象 ##]]></content>
+      <categories>
+        <category>spring</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Fredis%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[redis笔记！ 参考文献： 第三章 Redis/SSDB+Twemproxy安装与使用 nohup和&amp;使用 Twemproxy-缓存代理分片机制 环境win10 下 wsl 环境 ubuntu 的 redis Redis安装与使用 下载redis并安装 12345cd /usr/servers/ wget https://github.com/antirez/redis/archive/2.8.19.tar.gz tar -xvf 2.8.19.tar.gz cd redis-2.8.19/ make 后台启动Redis服务器 使用 nohup 和 &amp; 指令： 12nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis.conf &amp;` 查看是否启动成功 1ps -ef | grep redis 进入客户端并测试 123456/usr/servers/redis-2.8.19/src/redis-cli -p 6379 127.0.0.1:6379&gt; set i 1 OK 127.0.0.1:6379&gt; get i "1" 127.0.0.1:6379&gt; quit # quit 退出 redis 客户端 redis客户端显示中文 1./redis-cli -- raw # 默认redis不转义中文的，需要加上 --raw redis-cli查看所有的keys及清空所有的数据 12keys * # 查看所有keysflushall # 清空所有数据 Redis主从 基本设置 1234567891011121314151617181920212223242526#端口设置，默认6379 port 6379 #日志文件，默认/dev/null logfile &quot;&quot;#内存大小对应关系 # 1k =&gt; 1000 bytes # 1kb =&gt; 1024 bytes # 1m =&gt; 1000000 bytes # 1mb =&gt; 1024*1024 bytes # 1g =&gt; 1000000000 bytes # 1gb =&gt; 1024*1024*1024 bytes #设置Redis占用100mb的大小 maxmemory 100mb #如果内存满了就需要按照如相应算法进行删除过期的/最老的 #volatile-lru 根据LRU算法移除设置了过期的key #allkeys-lru 根据LRU算法移除任何key(包含那些未设置过期时间的key) #volatile-random/allkeys-&gt;random 使用随机算法而不是LRU进行删除 #volatile-ttl 根据Time-To-Live移除即将过期的key #noeviction 永不过期，而是报错 maxmemory-policy volatile-lru #Redis并不是真正的LRU/TTL，而是基于采样进行移除的，即如采样10个数据移除其中最老的/即将过期的 maxmemory-samples 10 Redis主从 12345678910111213141516#在配置文件中挂载主从，不推荐这种方式，我们实际应用时Redis可能是会宕机的 slaveof masterIP masterPort #从是否只读，默认yes slave-read-only yes #当从失去与主的连接或者复制正在进行时，从是响应客户端（可能返回过期的数据）还是返回“SYNC with master in progress”错误，默认yes响应客户端 slave-serve-stale-data yes #从库按照默认10s的周期向主库发送PING测试连通性 repl-ping-slave-period 10 #设置复制超时时间（SYNC期间批量I/O传输、PING的超时时间），确保此值大于repl-ping-slave-period #repl-timeout 60 #当从断开与主的连接时的复制缓存区，仅当第一个从断开时创建一个，缓存区越大从断开的时间可以持续越长 # repl-backlog-size 1mb #当从与主断开持续多久时清空复制缓存区，此时从就需要全量复制了，如果设置为0将永不清空 # repl-backlog-ttl 3600 #slave客户端缓存区，如果缓存区超过256mb将直接断开与从的连接，如果持续60秒超过64mb也会断开与从的连接 client-output-buffer-limit slave 256mb 64mb 60 设置主从 123456789101112131415161718192021cd /usr/servers/redis-2.8.19 cp redis.conf redis_6660.conf cp redis.conf redis_6661.conf # 将端口分别改为port 6660和port 6661vim redis_6660.conf vim redis_6661.conf # 启动nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis_6660.conf &amp; nohup /usr/servers/redis-2.8.19/src/redis-server /usr/servers/redis-2.8.19/redis_6661.conf &amp; # 查看是否启动成功ps -aux | grep redis # 进入从客户端，挂主（不在配置文件设置 slaveof masterIP masterPort ）/usr/servers/redis-2.8.19/src/redis-cli -p 6661 127.0.0.1:6661&gt; slaveof 127.0.0.1 6660 OK 127.0.0.1:6661&gt; info replication # Replication role:slave ... Redis持久化 为了防止数据丢失，可以挂载一个从（叶子节点）只进行持久化存储工作。 Redis持久化有RDB快照模式和AOF追加模式。 Redis动态调整配置 123456789127.0.0.1:6660&gt; config get maxmemory 1) "maxmemory" 2) "10485760"# 调整配置值127.0.0.1:6660&gt; config set maxmemory 20971520 # 上述命令重启redis后该配置会丢失，可以执行如下命令重写配置文件127.0.0.1:6660&gt; config rewrite Redis集群一旦涉及到一台物理机无法存储的情况就需要考虑使用分片机制将数据存储到多台服务器，可以说是Redis集群。 利用 Twemproxy 实现分片、减少连接数、Hash Tag 分片逻辑。 Twemproxy 代理 Twemproxy 配置 12# 配置文件vim /usr/servers/twemproxy-0.4.0/conf/nutcracker.yml 1234567891011server1: listen: 127.0.0.1:1111 ## 监听地址和端口 hash: fnv1a_64 ## 散列算法 distribution: ketama ## 分片的算法，有ketama（一致性hash）、module（取模）、random（随机）三种算法# auto_eject_hosts: true ## 是否在节点无法响应时自动从服务器列表中剔除，重新响应时自动加入服务器列表中# timeout: 1000 hash_tag: "::" redis: true ## 后端代理的是否为redis servers: - 127.0.0.1:6660:1 server1 - 127.0.0.1:6661:1 server2 Twemproxy 启动 1234/usr/servers/twemproxy-0.4.0/src/nutcracker -d -c /usr/servers/twemproxy-0.4.0/conf/nutcracker.ymlps -aux | grep nutcracker# 启动 Redis 客户端对应端口，查看是否代理成功/usr/servers/redis-2.8.19/src/redis-cli -p 1111 或者配置启动/重启/停止脚本方便操作 12chmod +x /usr/servers/twemproxy-0.4.0/scripts/nutcracker.init vim /usr/servers/twemproxy-0.4.0/scripts/nutcracker.init 将OPTIONS改为 OPTIONS=”-d -c /usr/local/twemproxy/conf/nutcracker.yml” 注释掉. /etc/rc.d/init.d/functions； 将daemon –user ${USER} ${prog} $OPTIONS改为${prog} $OPTIONS； [报错]：若nutcracker没设置为全局变量，则会报此错 nutcracker: command not found 写了全路径：/usr/servers/twemproxy-0.4.0/src/${prog} $OPTIONS 将killproc改为killall。 这样就可以使用如下脚本进行启动、重启、停止了。 1nutcracker.init &#123;start|stop|status|restart|reload|condrestart&#125;]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
       </tags>
   </entry>
   <entry>

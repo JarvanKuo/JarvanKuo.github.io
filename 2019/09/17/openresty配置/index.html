@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="openresty配置的一些问题总结！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-28T14:24:24.000Z">
+<meta property="og:updated_time" content="2019-09-29T03:42:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openresty配置">
 <meta name="twitter:description" content="openresty配置的一些问题总结！">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  591
+                  621
                 </span>
               
 
@@ -537,6 +537,9 @@
 <p>如果使用批量查询如mget，查不到数据会返回 ngx.null     </p>
 </li>
 </ul>
+<h2 id="OpenResty缓存"><a href="#OpenResty缓存" class="headerlink" title="OpenResty缓存"></a>OpenResty缓存</h2><p>需要先在 nginx.conf 里面的修改 ，这个 cache 是 Nginx 所有 worker 之间共享的</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lua_shared_dict</span> my_cache <span class="number">128m</span>;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -567,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/SSDB数据库笔记/" rel="next" title="SSDB数据库笔记">
-                <i class="fa fa-chevron-left"></i> SSDB数据库笔记
+              <a href="/2019/09/17/markdown笔记/" rel="next" title="markdown笔记">
+                <i class="fa fa-chevron-left"></i> markdown笔记
               </a>
             
           </div>
@@ -577,8 +580,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/17/wsl笔记/" rel="prev" title="wsl笔记">
-                wsl笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/SSDB数据库笔记/" rel="prev" title="SSDB数据库笔记">
+                SSDB数据库笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -660,7 +663,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -671,7 +674,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -682,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -750,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl安装"><span class="nav-number">2.</span> <span class="nav-text">wsl安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty安装"><span class="nav-number">3.</span> <span class="nav-text">openresty安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl版本问题"><span class="nav-number">3.1.</span> <span class="nav-text">openssl版本问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lua模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">Lua模块安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty使用"><span class="nav-number">4.</span> <span class="nav-text">openresty使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf-配置"><span class="nav-number">4.2.</span> <span class="nav-text">nginx.conf 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lua-的一些坑"><span class="nav-number">5.</span> <span class="nav-text">lua 的一些坑</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl安装"><span class="nav-number">2.</span> <span class="nav-text">wsl安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty安装"><span class="nav-number">3.</span> <span class="nav-text">openresty安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl版本问题"><span class="nav-number">3.1.</span> <span class="nav-text">openssl版本问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lua模块安装"><span class="nav-number">3.2.</span> <span class="nav-text">Lua模块安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openresty使用"><span class="nav-number">4.</span> <span class="nav-text">openresty使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf-配置"><span class="nav-number">4.2.</span> <span class="nav-text">nginx.conf 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lua-的一些坑"><span class="nav-number">5.</span> <span class="nav-text">lua 的一些坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenResty缓存"><span class="nav-number">6.</span> <span class="nav-text">OpenResty缓存</span></a></li></ol></div>
             
 
           </div>
@@ -784,7 +787,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.1k</span>
+    <span title="Site words total count">6k</span>
   
 </div>
 
