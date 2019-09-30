@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="spring,">
+  <meta name="keywords" content="java8,函数式编程,">
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="spring的一些坑！">
-<meta name="keywords" content="spring">
+<meta name="description" content="java8新特性：函数式编程，stream流，Optional  类！">
+<meta name="keywords" content="java8,函数式编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring笔记">
-<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/17/spring笔记/index.html">
+<meta property="og:title" content="java8新特性">
+<meta property="og:url" content="https://JarvanKuo.github.io/2019/09/17/java8新特性/index.html">
 <meta property="og:site_name" content="JK的技术博客">
-<meta property="og:description" content="spring的一些坑！">
+<meta property="og:description" content="java8新特性：函数式编程，stream流，Optional  类！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T02:57:10.000Z">
+<meta property="og:updated_time" content="2019-09-30T12:14:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring笔记">
-<meta name="twitter:description" content="spring的一些坑！">
+<meta name="twitter:title" content="java8新特性">
+<meta name="twitter:description" content="java8新特性：函数式编程，stream流，Optional  类！">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/17/spring笔记/">
+  <link rel="canonical" href="https://JarvanKuo.github.io/2019/09/17/java8新特性/">
 
 
 
 
 
-  <title>spring笔记 | JK的技术博客</title>
+  <title>java8新特性 | JK的技术博客</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/17/spring笔记/">
+    <link itemprop="mainEntityOfPage" href="https://JarvanKuo.github.io/2019/09/17/java8新特性/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jarvan Kuo">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring笔记</h1>
+          <h1 class="post-title" itemprop="name headline">java8新特性</h1>
         
 
         <div class="post-meta">
@@ -383,8 +383,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/spring/" itemprop="url" rel="index">
-                    <span itemprop="name">spring</span>
+                  <a href="/categories/java/java8/" itemprop="url" rel="index">
+                    <span itemprop="name">java8</span>
                   </a>
                 </span>
 
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  169
+                  1.8k
                 </span>
               
 
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -456,29 +456,157 @@
       
 
       
-        <p>spring的一些坑！</p>
+        <p>java8新特性：函数式编程，stream流，<em>Optional</em>  类！</p>
 <a id="more"></a>
 
 <p>参考文献：</p>
-<h2 id="spring容器"><a href="#spring容器" class="headerlink" title="spring容器"></a>spring容器</h2><ul>
-<li><p>Spring中自己new出来的对象不能自动注入对象和属性</p>
+<p><a href="https://www.cnblogs.com/zhangboyu/p/7580262.html" target="_blank" rel="noopener">理解、学习与使用 Java 中的 Optional</a></p>
+<p><a href="https://www.jianshu.com/p/eb331282f2f3" target="_blank" rel="noopener">Java8之Stream流（一）基础体验</a></p>
+<p><a href="https://blog.csdn.net/Mark_Chao/article/details/80810030" target="_blank" rel="noopener">java8 stream流操作的flatMap（流的扁平化）</a></p>
+<p><a href="https://www.cnblogs.com/kangkaii/p/8419082.html" target="_blank" rel="noopener">java中使用Lambda表达式的5种语法</a></p>
+<h2 id="Lambda语法"><a href="#Lambda语法" class="headerlink" title="Lambda语法"></a>Lambda语法</h2><ul>
+<li><p>标准写法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(arr, (String m, String n) -&gt; Integer.compare(m.length(), n.length()));</span><br></pre></td></tr></table></figure>
+
+<p>lambda表达式的标准写法由下面几点构成：</p>
 <ul>
-<li><p>原因</p>
-<p> @Autowired注入时是将类交给Springboot管理，而new出来的实例脱离了Springboot的管理，两个东西不在一个管理者管理下，所以没法联系在一起，@Autowired注入就会为null。</p>
+<li>以逗号分隔，以（）关闭的形参：<code>(Dog m, Dog n)</code></li>
+<li>箭头标记：<code>-&gt;</code></li>
+<li>主体部分则是一个单表达式或者声明代码块。如下是单表达式形式：<code>Integer.compare(m.getWeight(), n.getWeight())</code></li>
+</ul>
 </li>
-<li><p>解决方法</p>
-<ol>
-<li><p>不要用new的方式实例化，也采用注解的方式，在需要new的实例类上加@Component注解，通过注入的方式使用实例化类。</p>
+<li><p>参数类型可以推断</p>
+<p>如果参数的类型可以根据上下文推断出来，则可以省略掉类型</p>
 </li>
-<li><p>使用ApplicationContextAware和反射方式获取容器的bean重新set进去</p>
-<p>参考：<a href="https://blog.csdn.net/cgengwei/article/details/79419305" target="_blank" rel="noopener">自己new的对象怎么注入spring管理的对象</a></p>
+<li><p>存在多行代码</p>
+<p>需要{} 括起来，且代码应该有明确的返回语句</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(arr, (String m, String n) -&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (m.length() &gt; n.length())</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
+<li><p>单个参数并可推断类型</p>
+<p>可以省略参数 “x” 的括号</p>
+</li>
+<li><p>方法引用</p>
+<p>写成::形式，并省略参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>没有参数</p>
+<p><code>() -&gt; {for(int i=0; i&lt;10; i++) doSomthing();}</code></p>
+</li>
+</ul>
+<h2 id="Optional-类"><a href="#Optional-类" class="headerlink" title="Optional 类"></a>Optional 类</h2><p>包含有可选值的包装类，既可以含有对象也可以为空。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li><p>ofNullable() </p>
+<p>创建Optional对象：传入的对象即可能是 <em>null</em> 也可能是非 null，不会抛出异常NullPointerException</p>
+</li>
+<li><p>ifPresent()</p>
+<p>选择性执行语句：该方法除了执行检查，还接受一个<em>Consumer(消费者</em>) 参数，如果对象不是空的，就对执行传入的 Lambda 表达式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opt.ifPresent( u -&gt; assertEquals(user.getEmail(), u.getEmail()));</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，只有 user 用户不为 null 的时候才会执行断言。</p>
+</li>
+<li><p>orElseGet()</p>
+<p>返回默认值：这个方法会在有值的时候返回值，如果没有值，它会执行作为参数传入的 <em>Supplier(供应者)</em> 函数式接口，并将返回其执行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User result = Optional.ofNullable(user).orElseGet( () -&gt; user2);</span><br></pre></td></tr></table></figure>
+
+<p><strong>orElse() 和 orElseGet() 的不同之处：</strong> <em>Optional</em>  对象返回非空值后，<em>orElse()</em> 方法仍然创建了 默认值 对象，而orElseGet() 方法不创建 默认值 对象。</p>
+</li>
+<li><p><em>orElseThrow()</em> </p>
+<p>在对象为空的时候抛出异常，而不是返回备选的值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span>(expected = IllegalArgumentException.class)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whenThrowException_thenOk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User result = Optional.ofNullable(user)</span><br><span class="line">      .orElseThrow( () -&gt; <span class="keyword">new</span> IllegalArgumentException());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法让我们有更丰富的语义，可以决定抛出什么样的异常，而不总是抛出 <em>NullPointerException</em>。</p>
+</li>
+<li><p>map()</p>
+</li>
+<li><p>filter()</p>
+</li>
+<li><p>Optional 类的链式方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String result = Optional.ofNullable(user)</span><br><span class="line">  .flatMap(User::getAddress)</span><br><span class="line">  .flatMap(Address::getCountry)</span><br><span class="line">  .map(Country::getIsocode)</span><br><span class="line">  .orElse(<span class="string">"default"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h2><ul>
+<li><p>概念</p>
+<p>Java 8 中的 Stream 是对集合（Collection）对象功能的增强</p>
+<ul>
+<li>专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation）</li>
+<li>大批量数据操作 (bulk data operation)</li>
+<li>支持 Lambda 表达式</li>
+<li>不是集合元素，它不是数据结构并不保存数据，它是有关算法和计算的</li>
+<li>作用更像一个高级版本的 Iterator，与迭代器不同点，Stream 可以并行化操作，迭代器只能命令式地、串行化操作</li>
+<li>Stream 的并行操作依赖于 Java7 中引入的 Fork/Join 框架（JSR166y）来拆分任务和加速处理过程</li>
+</ul>
+</li>
+<li><p>“终端操作”&amp;”中间操作”</p>
+<ul>
+<li><p>终端操作： 会消费流，这种操作会产生一个结果的</p>
+<p> iterator()、 spliterator()、min()、max()、forEach()</p>
+</li>
+<li><p>中间操作：会产生另一个流，类似管道</p>
 </li>
 </ul>
 </li>
+<li><p>缩减操作</p>
+<p>缩减操作的三个约束条件</p>
+<ul>
+<li>无状态</li>
+<li>不干预</li>
+<li>关联性</li>
 </ul>
-<p>## </p>
+<p>reduce()-通用的方法，而min()和max()，count()这些操作称为特例缩减。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">reduce</span><span class="params">(T identity, BinaryOperator&lt;T&gt; accumulator)</span></span>;<span class="comment">//1</span></span><br><span class="line"><span class="function">Optional&lt;T&gt; <span class="title">reduce</span><span class="params">(BinaryOperator&lt;T&gt; accumulator)</span></span>;<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>第一个版本的identity为初始化值（兼容单个值的情况），求和的时候为0，求积的时候它的值为1。</p>
+<p>其中的accumulator是一个BinaryOperator<t>的类型，他是java.util.function包中声明的函数式接口，它扩展了BiFunction函数式接口.</t></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BinaryOperator</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">BiFunction</span>&lt;<span class="title">T</span>,<span class="title">T</span>,<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BiFunction</span>&lt;<span class="title">T</span>, <span class="title">U</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">   <span class="function">R <span class="title">apply</span><span class="params">(T t, U u)</span></span>;<span class="comment">//notice</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>apply()对他的两个操作数(t,u)应用到同一个函数上，并返回结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 直接函数式编程</span><br><span class="line">reduce((a, b) -&gt; a + b)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并行流</p>
+<p>对流调用一下parallel()，或者Collection.parallelStream()</p>
+<p>在reduce()的第三版本比较适合并行流，accumulator被称为累加器， combiner被称为合成器， combiner定义的函数将accumulator提到的两个值合并起来</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Stream</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">BaseStream</span>&lt;<span class="title">T</span>, <span class="title">Stream</span>&lt;<span class="title">T</span>&gt;&gt; </span>&#123;</span><br><span class="line"><span class="comment">//、、、忽略其他无关紧要的元素</span></span><br><span class="line">&lt;U&gt; <span class="function">U <span class="title">reduce</span><span class="params">(U identity,</span></span></span><br><span class="line"><span class="function"><span class="params">          BiFunction&lt;U, ? <span class="keyword">super</span> T, U&gt; accumulator,</span></span></span><br><span class="line"><span class="function"><span class="params">          BinaryOperator&lt;U&gt; combiner)</span></span>;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>顺序流&amp;并行流&amp;无序流之间的切换操作</p>
+<p>在使用并行流时，有时候流是无序的就能获得性能上的提升，可以通过BaseStream接口提供的unordered()方法把流转换成一个无序流之后，再进行各种操作</p>
+<p>forEach()方法不一定会保留并行流的顺序，如果在对并行流的每个元素执行操作时，也希望保留顺序，那么可以使用forEachOrdered()方法，它的用法和forEach()是一样的。</p>
+<p>forEach底层采用的是迭代器的方式。如果数据结构是ArrayList这种数据结构，那你可以采用for,但是你的数据结构如果是LinkList那你千万别再用for,应该果断采用forEach,因为数据一多起来的，for此时的效率低得可怜</p>
+</li>
+<li><p>映射</p>
+<ul>
+<li><p>filter方法</p>
+<p>filter方法的参数是一个Predicate<t>对象，即一个从T到boolean的函数，返回为true的</t></p>
+</li>
+<li><p>map方法</p>
+<p>对一个流中的值进行某种形式的转换，返回的是对应类型的Stream对象。</p>
+</li>
+<li><p>flatMap方法</p>
+<p>flat – 摊平，流的扁平化</p>
+<p>flatMap()操作能把原始流中的元素进行一对多的转换，并且将新生成的元素全都合并到它返回的流里面，即重新整合为一个流。</p>
+<p>将多个Stream连接成一个Stream，这时候不是用新值取代Stream的值，与map有所区别，这是重新生成一个Stream对象取而代之。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String[] words = <span class="keyword">new</span> String[]&#123;<span class="string">"Hello"</span>,<span class="string">"World"</span>&#125;;</span><br><span class="line">List&lt;String&gt; a = Arrays.stream(words)</span><br><span class="line">    .map(word -&gt; word.split(<span class="string">""</span>))</span><br><span class="line">    .flatMap(Arrays::stream)</span><br><span class="line">    .distinct()</span><br><span class="line">    .collect(toList());</span><br><span class="line">a.forEach(System.out::print);</span><br><span class="line"><span class="comment">// 输出 ["H","e","l","o","W","r","d"]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>收集功能</p>
+<ul>
+<li><p><code>Collectors</code>类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt;  Collector&lt;T, ?, List&lt;T&gt;&gt; toList()</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Collector&lt;T, ?, Set&lt;T&gt;&gt; toSet()</span><br></pre></td></tr></table></figure>
+
+<p>用法：<code>steam.collect(Collectors.toList)</code></p>
+</li>
+<li><p>collect方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R&gt; <span class="function">R <span class="title">collect</span><span class="params">(Supplier&lt;R&gt; supplier,</span></span></span><br><span class="line"><span class="function"><span class="params">                 BiConsumer&lt;R, ? <span class="keyword">super</span> T&gt; accumulator,</span></span></span><br><span class="line"><span class="function"><span class="params">                 BiConsumer&lt;R, R&gt; combiner)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>类似上面的缩减操作。其中supplier指定如何创建用于保存结果的对象，比如，要使用ArrayList作为结果的集合，需要指定它的构造函数，accumulator函数是将一个元素添加到结果中，而combiner函数合并两个部分的结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">learnCollect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;HeroPlayerGold&gt; lists = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        lists.add(<span class="keyword">new</span> HeroPlayerGold(<span class="string">"盖伦"</span>, <span class="string">"RNG-Letme"</span>, <span class="number">100</span>));</span><br><span class="line">        lists.add(<span class="keyword">new</span> HeroPlayerGold(<span class="string">"诸葛亮"</span>, <span class="string">"RNG-Xiaohu"</span>, <span class="number">300</span>));</span><br><span class="line">        lists.add(<span class="keyword">new</span> HeroPlayerGold(<span class="string">"露娜"</span>, <span class="string">"RNG-MLXG"</span>, <span class="number">300</span>));</span><br><span class="line">        lists.add(<span class="keyword">new</span> HeroPlayerGold(<span class="string">"狄仁杰"</span>, <span class="string">"RNG-UZI"</span>, <span class="number">500</span>));</span><br><span class="line">        lists.add(<span class="keyword">new</span> HeroPlayerGold(<span class="string">"牛头"</span>, <span class="string">"RNG-Ming"</span>, <span class="number">500</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        lists.stream().collect(HashSet::<span class="keyword">new</span>,</span><br><span class="line">                               HashSet::add,</span><br><span class="line">                               HashSet::addAll</span><br><span class="line">        ).forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="Spliterator"><a href="#Spliterator" class="headerlink" title="Spliterator"></a>Spliterator</h4><p>Spliterator是Java8新增的一种迭代器，Spliterator支持并行迭代。</p>
+</li>
+</ul>
 
       
     </div>
@@ -496,7 +624,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/java8/" rel="tag"># java8</a>
+          
+            <a href="/tags/函数式编程/" rel="tag"># 函数式编程</a>
           
         </div>
       
@@ -509,8 +639,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/wsl笔记/" rel="next" title="wsl笔记">
-                <i class="fa fa-chevron-left"></i> wsl笔记
+              <a href="/2019/09/17/atlas笔记/" rel="next" title="atlas笔记">
+                <i class="fa fa-chevron-left"></i> atlas笔记
               </a>
             
           </div>
@@ -519,8 +649,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/17/template/" rel="prev" title="template">
-                template <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/17/SSDB数据库笔记/" rel="prev" title="SSDB数据库笔记">
+                SSDB数据库笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -692,7 +822,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#spring容器"><span class="nav-number">1.</span> <span class="nav-text">spring容器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda语法"><span class="nav-number">1.</span> <span class="nav-text">Lambda语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optional-类"><span class="nav-number">2.</span> <span class="nav-text">Optional 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">2.1.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stream流"><span class="nav-number">3.</span> <span class="nav-text">Stream流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spliterator"><span class="nav-number">3.0.1.</span> <span class="nav-text">Spliterator</span></a></li></ol></li></ol></div>
             
 
           </div>
