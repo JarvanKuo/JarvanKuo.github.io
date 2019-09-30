@@ -13,14 +13,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[linux笔记]]></title>
-    <url>%2F2019%2F09%2F17%2Flinux%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[linux相关命令、配置。 参考文献： 命令 字符编码转换 iconv命令 iconv命令是用来转换文件的编码方式的 12345678910111213141516# 语法iconv -f encoding [-t encoding] [inputfile]... # 选项-f encoding :把字符从encoding编码开始转换。 -t encoding :把字符转换到encoding编码。 -l :列出已知的编码字符集合 -o file :指定输出文件 -c :忽略输出的非法字符 -s :禁止警告信息，但不是错误信息 --verbose :显示进度信息 -f和-t所能指定的合法字符在-l选项的命令里面都列出来了。 # 列出当前支持的字符编码： iconv -l # 将文件file1转码，转后文件输出到fil2中： iconv file1 -f EUC-JP-MS -t UTF-8 -o file2]]></content>
+    <title><![CDATA[nginx配置]]></title>
+    <url>%2F2019%2F09%2F17%2Fnginx%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[nginx的命令，配置！ nginx工作原理Nginx工作原理（Master+Worker） nginx常用命令 测试配置文件 1nginx -t 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx概念 upstream 负载均衡概要 upstream 是 Nginx 的 HTTP Upstream 模块，这个模块通过一个简单的调度算法来实现客户端 IP 到后端服务器的负载均衡 123456789101112upstream test.net&#123; ip_hash; server 192.168.10.13:80; server 192.168.10.14:80 down; server 192.168.10.15:8009 max_fails=3 fail_timeout=20s; server 192.168.10.16:8080;&#125;server &#123; location / &#123; proxy_pass http://test.net; &#125;&#125;]]></content>
       <categories>
-        <category>linux</category>
+        <category>服务器</category>
+        <category>nginx</category>
       </categories>
       <tags>
-        <tag>linux</tag>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -36,15 +37,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[spring笔记]]></title>
-    <url>%2F2019%2F09%2F17%2Fspring%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[spring的一些坑！ 参考文献： spring容器 Spring中自己new出来的对象不能自动注入对象和属性 原因 @Autowired注入时是将类交给Springboot管理，而new出来的实例脱离了Springboot的管理，两个东西不在一个管理者管理下，所以没法联系在一起，@Autowired注入就会为null。 解决方法 不要用new的方式实例化，也采用注解的方式，在需要new的实例类上加@Component注解，通过注入的方式使用实例化类。 使用ApplicationContextAware和反射方式获取容器的bean重新set进去 参考：自己new的对象怎么注入spring管理的对象 ##]]></content>
+    <title><![CDATA[idea使用技巧]]></title>
+    <url>%2F2019%2F09%2F17%2Fidea%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[idea使用技巧！ 参考文献： 技巧 快捷键生成serialVersionUID IDEA快捷键生成serialVersionUID idea配置serializable class without ‘serialVersionUID’ 在对应类名上 alt+enter 即弹出对应选项 踩坑 console中文乱码 settings设置UTF-8 tomcat 设置 -Dfile.encoding=utf-8 注意：IntelliJIDEA15.0.6\bin找到idea.exe.vmoption文件，这文件修改已经失效 替代方法：HELP-&gt;Edit Custom VM OPtions中加 -Dfile.encoding=utf-8 ​ 升级后覆盖vmoption文件后会都需要手动设置一下，并重启idea ​ 这个文件是在用户目录下的，而且命名不一定一致，所以直接在软件上操作]]></content>
       <categories>
-        <category>java</category>
-        <category>spring</category>
+        <category>编辑器</category>
+        <category>idea</category>
       </categories>
       <tags>
-        <tag>spring</tag>
+        <tag>idea</tag>
       </tags>
   </entry>
   <entry>
@@ -85,15 +86,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[ForkJoin框架]]></title>
-    <url>%2F2019%2F09%2F17%2FForkJoin%E6%A1%86%E6%9E%B6%2F</url>
-    <content type="text"><![CDATA[ForkJoin框架概要！ 参考文献： Java–8–新特性–串并行流与ForkJoin框架 ForkJoin框架概念Fork/Join框架：在必要的情况下，将一个大任务，进行拆分（fork） 成若干个子任务（拆到不能再拆，这里就是指我们制定的拆分的临界值），再将一个个小任务的结果进行join汇总。 Fork/Join与传统线程池的区别Fork/Join采用“工作窃取模式”，当执行新的任务时他可以将其拆分成更小的任务执行，并将小任务加到线程队列中，然后再从一个随即线程中偷一个并把它加入自己的队列中。]]></content>
+    <title><![CDATA[linux笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Flinux%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[linux相关命令、配置。 参考文献： 命令 字符编码转换 iconv命令 iconv命令是用来转换文件的编码方式的 12345678910111213141516# 语法iconv -f encoding [-t encoding] [inputfile]... # 选项-f encoding :把字符从encoding编码开始转换。 -t encoding :把字符转换到encoding编码。 -l :列出已知的编码字符集合 -o file :指定输出文件 -c :忽略输出的非法字符 -s :禁止警告信息，但不是错误信息 --verbose :显示进度信息 -f和-t所能指定的合法字符在-l选项的命令里面都列出来了。 # 列出当前支持的字符编码： iconv -l # 将文件file1转码，转后文件输出到fil2中： iconv file1 -f EUC-JP-MS -t UTF-8 -o file2]]></content>
       <categories>
-        <category>java</category>
-        <category>分布式</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>ForkJoin</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -109,15 +109,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[nginx配置]]></title>
-    <url>%2F2019%2F09%2F17%2Fnginx%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[nginx的命令，配置！ nginx工作原理Nginx工作原理（Master+Worker） nginx常用命令 测试配置文件 1nginx -t 启动： 指定配置文件 1nginx -p `pwd`/ -c conf/nginx.conf 停止： nginx指定配置文件的，停止时也需指定参数 1nginx -p `pwd`/ -c conf/nginx.conf -s quit nginx概念 upstream 负载均衡概要 upstream 是 Nginx 的 HTTP Upstream 模块，这个模块通过一个简单的调度算法来实现客户端 IP 到后端服务器的负载均衡 123456789101112upstream test.net&#123; ip_hash; server 192.168.10.13:80; server 192.168.10.14:80 down; server 192.168.10.15:8009 max_fails=3 fail_timeout=20s; server 192.168.10.16:8080;&#125;server &#123; location / &#123; proxy_pass http://test.net; &#125;&#125;]]></content>
+    <title><![CDATA[ForkJoin框架]]></title>
+    <url>%2F2019%2F09%2F17%2FForkJoin%E6%A1%86%E6%9E%B6%2F</url>
+    <content type="text"><![CDATA[ForkJoin框架概要！ 参考文献： Java–8–新特性–串并行流与ForkJoin框架 ForkJoin框架概念Fork/Join框架：在必要的情况下，将一个大任务，进行拆分（fork） 成若干个子任务（拆到不能再拆，这里就是指我们制定的拆分的临界值），再将一个个小任务的结果进行join汇总。 Fork/Join与传统线程池的区别Fork/Join采用“工作窃取模式”，当执行新的任务时他可以将其拆分成更小的任务执行，并将小任务加到线程队列中，然后再从一个随即线程中偷一个并把它加入自己的队列中。]]></content>
       <categories>
-        <category>服务器</category>
-        <category>nginx</category>
+        <category>java</category>
+        <category>分布式</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
+        <tag>ForkJoin</tag>
       </tags>
   </entry>
   <entry>
@@ -157,6 +157,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[spring笔记]]></title>
+    <url>%2F2019%2F09%2F17%2Fspring%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[spring的一些坑！ 参考文献： spring容器 Spring中自己new出来的对象不能自动注入对象和属性 原因 @Autowired注入时是将类交给Springboot管理，而new出来的实例脱离了Springboot的管理，两个东西不在一个管理者管理下，所以没法联系在一起，@Autowired注入就会为null。 解决方法 不要用new的方式实例化，也采用注解的方式，在需要new的实例类上加@Component注解，通过注入的方式使用实例化类。 使用ApplicationContextAware和反射方式获取容器的bean重新set进去 参考：自己new的对象怎么注入spring管理的对象 ##]]></content>
+      <categories>
+        <category>java</category>
+        <category>spring</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[wsl笔记]]></title>
     <url>%2F2019%2F09%2F17%2Fwsl%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[wsl 下的 ubuntu 系统一些问题总结！ 参考文献： Windows 10生产力提升之WSL实践 在wsl下安装使用sshd全攻略.md 环境win10 下 wsl 环境安装 ubuntu 修改更新源 备份文件 1sudo cp /etc/apt/sources.list /etc/apt/sources.list.old 使用阿里源 打开文件： 12 sudo vi /etc/apt/sources.list` 整个文件替换成阿里源： 12345678910deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiversedeb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse 更新 12sudo apt-get updatesudo apt-get upgrade 设置超级用户ubuntu的su初始密码设置 1sudo passwd zsh美化终端安装使用oh-my-zsh（Win10+WSL或Ubuntu） 设zsh为默认shell1chsh -s /bin/zsh # 设置 bash 同理 环境变量PATH使用zsh后，环境变量需要在 ~/.zshrc 配置文件中定义，/etc/profile 是不会生效的 开启 ssh 远程连接wsl下的ubuntu自带ssh服务有问题需要卸载重装一遍ssh服务 123456789101112# 重装 openssh-serversudo apt-get remove openssh-serversudo apt-get install openssh-server# 修改 shd_config文件sudo vi /etc/ssh/sshd_config# Port 22 #默认即可，如果有端口占用可以自己修改# PasswordAuthentication yes # 允许用户名密码方式登录# PermitRootLogin yes # 允许管理员ssh登录# 重启ssh服务sudo service ssh restart apt命令与问题[Ubuntu的apt命令详解] 搜索软件 1sudo apt-cache search package_name WSL Ubuntu 解决出现 E: Could not read response to hello message from hook …问题 执行以下命令 1sudo rm -rf /etc/apt/apt.conf.d/20snapd.conf windows 和 wsl 互相访问文件 打开wsl文件 使用explorer.exe，wsl下切换用户就不能使用这个命令。。。 1explorer.exe . 访问windows文件，使用挂载方式/mnt/ 1cd /mnt/c/Users/Ben/Documents/ wsl开机没有自启动ssh需要在wsl中手动运行一下： 1sudo service ssh start 由于是wsl内部是类似docker运行的，没有 systemd 服务 重装python 检查python路径： 123456789# 方式一：type -a python# 方式二：ls -l /usr/bin/pythonls -l /usr/bin/python*# 方式三：which python 安装python2、python3 1234# 安装python2$ sudo apt-get install python# 安装python3$ sudo apt-get install python3]]></content>
@@ -166,6 +178,30 @@
       </categories>
       <tags>
         <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Lombok插件]]></title>
+    <url>%2F2019%2F09%2F17%2FLombok%E6%8F%92%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[Lombok插件！ 参考文献： Lombok使用示例详情 idea 使用 Lombok plugin 插件ntellij idea 使用Lombok需要安装插件：Lombok plugin: Preferences —&gt; Plugins —&gt; 搜索 Lombok plugin — &gt; Install同时设置 Preferences -&gt; Compiler -&gt; Annotation Processors -&gt; Enable annotation processing勾选。 maven 工程引入lombok依赖1234567&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;&lt;dependency&gt; &lt;groupId&gt;org.projectlombok&lt;/groupId&gt; &lt;artifactId&gt;lombok&lt;/artifactId&gt; &lt;version&gt;1.16.20&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 常用注解 @Getter/@Setter 为字段生成Getter和Setter方法，可以注解到字段或者类上(注解在类上会为类中的所有字段生成Getter和Setter方法)，默认是public类型的， 如果需要的话可以修改方法的访问级别，@Getter(AccessLevel.PROTECTED) @AllArgsConstructor生成一个全参数的构造方法 @Data@Data 包含了 @ToString、@EqualsAndHashCode、@Getter / @Setter的功能]]></content>
+      <categories>
+        <category>java</category>
+        <category>代码生成</category>
+      </categories>
+      <tags>
+        <tag>Lombok</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[enum]]></title>
+    <url>%2F2019%2F09%2F17%2Fenum%E7%94%A8%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[enum语法！ 参考文献： java enum的用法详解 枚举ENUM的tostring() valueof()name()和values()用法 Enum原理1public enum Size&#123; SMALL, MEDIUM, LARGE, EXTRA_LARGE &#125;; 实际上，这个声明定义的类型是一个类，它刚好有四个实例。 方法 枚举常用的方法是values():对枚举中的常量值进行遍历; valueof(String name) :根据名称获取枚举类中定义的常量值;要求字符串跟枚举的常量名必须一致; 获取枚举类中的常量的名称使用枚举对象.name() 枚举类中重写了toString()方法,返回的是枚举常量的名称;]]></content>
+      <categories>
+        <category>java</category>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>enum</tag>
       </tags>
   </entry>
   <entry>
