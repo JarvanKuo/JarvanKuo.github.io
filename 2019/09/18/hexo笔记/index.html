@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="hexo的一些配置和命令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T11:05:26.000Z">
+<meta property="og:updated_time" content="2019-09-30T02:52:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo笔记">
 <meta name="twitter:description" content="hexo的一些配置和命令">
@@ -379,6 +379,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/建站/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -408,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  268
+                  366
                 </span>
               
 
@@ -464,6 +475,25 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Automatically Excerpt. Not recommend.</span></span><br><span class="line"><span class="comment"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</span></span><br><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure>
 
 <p><strong><em>注：</em></strong>使用<code>&lt;!-- more --&gt;</code>标志来精确控制文章的摘要预览，通常在文章开头写一下概要。</p>
+<h2 id="一篇文章多个-categories"><a href="#一篇文章多个-categories" class="headerlink" title="一篇文章多个 categories"></a>一篇文章多个 categories</h2><p><a href="https://www.jianshu.com/p/bff1b1845ac9" target="_blank" rel="noopener">Hexo 一篇文章多个 categories</a>:这里yaml语法错误，列表-的后面没有空格</p>
+<p><a href="https://www.jianshu.com/p/02e4a80026d0?from=timeline&isappinstalled=0" target="_blank" rel="noopener">YAML配置文件</a></p>
+<ul>
+<li><p>子分类</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">Java</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">Servlet</span></span><br><span class="line"><span class="comment"># 或者下面写法</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">[Java,</span> <span class="string">Servlet]</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>同级多个分类</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span> <span class="string">[[Java],</span> <span class="string">[Servlet]]</span> <span class="comment"># yaml兼容Json的语法，直接写Json串</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">[[Java,</span> <span class="string">Servlet],</span> <span class="string">[Servlet2]]</span> <span class="comment"># 包含子分类</span></span><br><span class="line"><span class="comment"># 或者下面写法</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">[Java]</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">[Servlet]</span></span><br><span class="line"><span class="comment"># 下面包含子分类</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">[Java,</span> <span class="string">Servlet]</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">[Programming]</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
 
       
     </div>
@@ -494,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/API接口安全处理/" rel="next" title="API接口安全处理">
-                <i class="fa fa-chevron-left"></i> API接口安全处理
+              <a href="/2019/09/17/linux笔记/" rel="next" title="linux笔记">
+                <i class="fa fa-chevron-left"></i> linux笔记
               </a>
             
           </div>
@@ -594,7 +624,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -605,7 +635,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -673,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-常用指令"><span class="nav-number">1.</span> <span class="nav-text">hexo 常用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内文章跳转"><span class="nav-number">2.</span> <span class="nav-text">站内文章跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo安装"><span class="nav-number">3.</span> <span class="nav-text">hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题"><span class="nav-number">4.</span> <span class="nav-text">NexT主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主题"><span class="nav-number">5.</span> <span class="nav-text">默认主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论插件-gitalk"><span class="nav-number">6.</span> <span class="nav-text">评论插件-gitalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内容区宽度"><span class="nav-number">7.</span> <span class="nav-text">修改内容区宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章阴影"><span class="nav-number">8.</span> <span class="nav-text">添加文章阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章摘要设置"><span class="nav-number">9.</span> <span class="nav-text">文章摘要设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-常用指令"><span class="nav-number">1.</span> <span class="nav-text">hexo 常用指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站内文章跳转"><span class="nav-number">2.</span> <span class="nav-text">站内文章跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo安装"><span class="nav-number">3.</span> <span class="nav-text">hexo安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题"><span class="nav-number">4.</span> <span class="nav-text">NexT主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主题"><span class="nav-number">5.</span> <span class="nav-text">默认主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评论插件-gitalk"><span class="nav-number">6.</span> <span class="nav-text">评论插件-gitalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改内容区宽度"><span class="nav-number">7.</span> <span class="nav-text">修改内容区宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章阴影"><span class="nav-number">8.</span> <span class="nav-text">添加文章阴影</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文章摘要设置"><span class="nav-number">9.</span> <span class="nav-text">文章摘要设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一篇文章多个-categories"><span class="nav-number">10.</span> <span class="nav-text">一篇文章多个 categories</span></a></li></ol></div>
             
 
           </div>
@@ -707,7 +737,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">6k</span>
+    <span title="Site words total count">6.1k</span>
   
 </div>
 
