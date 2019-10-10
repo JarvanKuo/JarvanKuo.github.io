@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="linux相关命令、配置。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-26T13:51:34.000Z">
+<meta property="og:updated_time" content="2019-10-02T08:48:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux笔记">
 <meta name="twitter:description" content="linux相关命令、配置。">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  189
+                  329
                 </span>
               
 
@@ -453,6 +453,21 @@
 <li><p><a href="https://blog.csdn.net/weixin_42425141/article/details/80940069" target="_blank" rel="noopener">字符编码转换 iconv命令</a></p>
 <p><strong>iconv命令</strong>是用来转换文件的编码方式的</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line">iconv -f encoding [-t encoding] [inputfile]... </span><br><span class="line"><span class="comment"># 选项</span></span><br><span class="line">-f encoding :把字符从encoding编码开始转换。 </span><br><span class="line">-t encoding :把字符转换到encoding编码。 </span><br><span class="line">-l :列出已知的编码字符集合 </span><br><span class="line">-o file :指定输出文件 </span><br><span class="line">-c :忽略输出的非法字符 </span><br><span class="line">-s :禁止警告信息，但不是错误信息 </span><br><span class="line">--verbose :显示进度信息 </span><br><span class="line">-f和-t所能指定的合法字符在-l选项的命令里面都列出来了。 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出当前支持的字符编码： </span></span><br><span class="line">iconv -l </span><br><span class="line"><span class="comment"># 将文件file1转码，转后文件输出到fil2中： </span></span><br><span class="line">iconv file1 -f EUC-JP-MS -t UTF-8 -o file2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rm与管道使用</p>
+<p><a href="https://blog.csdn.net/veryitman/article/details/7540336" target="_blank" rel="noopener">linux shell: rm 、ls、grep</a></p>
+<p><a href="https://blog.csdn.net/yuhaojin/article/details/54948799" target="_blank" rel="noopener">关于 find grep xargs 命令总结</a></p>
+<p><a href="https://blog.csdn.net/tianlong_cool/article/details/78566349" target="_blank" rel="noopener">find、xargs、grep基本用法</a></p>
+<ul>
+<li><p>ls 与 grep 结合</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l | grep ^d <span class="comment"># 列出当前路径下的所有文件夹</span></span><br><span class="line">rm  -fr  `ls  |  grep  -v  <span class="string">"^space.txt$"</span>` <span class="comment"># greo正则，ls、rm结合</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>find、xargs、grep配合使用</p>
+<p>find命令把匹配到的文件传递给xargs命令，而xargs命令每次只获取一部分文件而不是全部</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name “*.py”|xargs grep <span class="built_in">test</span> <span class="comment"># 从当前目录及其子目录的py文件中搜索test关键字</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rm与find联合</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">"*.mp"</span> | xargs rm -rf</span><br></pre></td></tr></table></figure>
 
 
 
@@ -464,6 +479,11 @@
 
 
 
+
+
+
+</li>
+</ul>
 </li>
 </ul>
 
@@ -589,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -600,7 +620,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -611,7 +631,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -713,7 +733,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">10k</span>
   
 </div>
 

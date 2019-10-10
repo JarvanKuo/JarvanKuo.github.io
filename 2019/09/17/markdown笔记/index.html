@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="markdown总结！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T02:52:20.000Z">
+<meta property="og:updated_time" content="2019-09-30T15:01:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="markdown笔记">
 <meta name="twitter:description" content="markdown总结！">
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  56
+                  363
                 </span>
               
 
@@ -464,6 +464,8 @@
 <h2 id="markdown创建表格"><a href="#markdown创建表格" class="headerlink" title="markdown创建表格"></a>markdown创建表格</h2><ul>
 <li>极简方式</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name | 价格 |  数量  </span><br><span class="line">-|-|-</span><br><span class="line">香蕉 | $1 | 5 |</span><br><span class="line">苹果 | $1 | 6 |</span><br><span class="line">草莓 | $1 | 7 |</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -491,6 +493,8 @@
 <ul>
 <li>格式化</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name | 111 | 222 | 333 | 444</span><br><span class="line">:-: | :-: | :-: | :-: | :-:</span><br><span class="line">aaa | bbb | ccc | ddd | eee| </span><br><span class="line">fff | ggg| hhh | iii | 000|</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -516,6 +520,44 @@
 <td align="center">000</td>
 </tr>
 </tbody></table>
+<ul>
+<li><p>合并表格</p>
+<p>单纯的markdown语法是不能实现，由于markdown支持html，我们可以通过表格在html中的table进行实现。  </p>
+</li>
+</ul>
+<p>需要注意的一点是，在markdown中使用html代码来实现表格的效果，需要在表格的外面套上</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;escape&gt;&lt;/escape&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（转义），防止markdown直接将代码中的行进行转义成回车，不然会出现表格前空了一大块空白。  </p>
+<p>但同时，引入html会使得markdown的易读易写的特性降低。除非必要，还是推荐使用markdown本身的表格语法。  </p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line"><span class="code">     &lt;tr&gt;</span></span><br><span class="line"><span class="code">       &lt;th&gt;项目1&lt;/th&gt;</span></span><br><span class="line"><span class="code">       &lt;th&gt;项目2&lt;/th&gt;</span></span><br><span class="line"><span class="code">       &lt;th&gt;项目3&lt;/th&gt;</span></span><br><span class="line"><span class="code">     &lt;/tr&gt;</span></span><br><span class="line"><span class="code">     &lt;tr&gt;</span></span><br><span class="line"><span class="code">       &lt;td&gt;a1&lt;/td&gt;</span></span><br><span class="line"><span class="code">       &lt;td colspan="2"&gt;a2&lt;/td&gt;</span></span><br><span class="line"><span class="code">     &lt;/tr&gt;</span></span><br><span class="line"><span class="code">     &lt;tr&gt;</span></span><br><span class="line"><span class="code">       &lt;td rowspan="2"&gt;b1&lt;/td&gt;</span></span><br><span class="line"><span class="code">       &lt;td&gt;b2&lt;/td&gt;</span></span><br><span class="line"><span class="code">       &lt;td&gt;b3&lt;/td&gt;</span></span><br><span class="line"><span class="code">     &lt;/tr&gt;</span></span><br><span class="line"><span class="code">     &lt;tr&gt;</span></span><br><span class="line"><span class="code">       &lt;td&gt;c2&lt;/td&gt;</span></span><br><span class="line"><span class="code">       &lt;td&gt;c3&lt;/td&gt;</span></span><br><span class="line"><span class="code">     &lt;/tr&gt;</span></span><br><span class="line">   &lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+
+<table>
+        <tr>
+          <th>项目1</th>
+          <th>项目2</th>
+          <th>项目3</th>
+        </tr>
+        <tr>
+          <td>a1</td>
+          <td colspan="2">a2</td>
+        </tr>
+        <tr>
+          <td rowspan="2">b1</td>
+          <td>b2</td>
+          <td>b3</td>
+        </tr>
+        <tr>
+          <td>c2</td>
+          <td>c3</td>
+        </tr>
+</table>
+
+
+
+
+
 
       
     </div>
@@ -639,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -650,7 +692,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -661,7 +703,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -763,7 +805,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">10k</span>
   
 </div>
 
