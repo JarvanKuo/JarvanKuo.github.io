@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="nginx的命令，配置！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-10T06:05:58.000Z">
+<meta property="og:updated_time" content="2019-10-11T02:15:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx配置">
 <meta name="twitter:description" content="nginx的命令，配置！">
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  180
+                  336
                 </span>
               
 
@@ -478,7 +478,17 @@
 
 </li>
 </ol>
-<h2 id="nginx添加新模块"><a href="#nginx添加新模块" class="headerlink" title="nginx添加新模块"></a>nginx添加新模块</h2><p><a href="https://www.cnblogs.com/654wangzai321/p/8000780.html" target="_blank" rel="noopener">nginx添加新模块</a>          </p>
+<h2 id="nginx添加新模块"><a href="#nginx添加新模块" class="headerlink" title="nginx添加新模块"></a>nginx添加新模块</h2><p><a href="https://www.cnblogs.com/654wangzai321/p/8000780.html" target="_blank" rel="noopener">nginx添加新模块</a>       </p>
+<h3 id="配置nginx与FastDFS关联配置文件"><a href="#配置nginx与FastDFS关联配置文件" class="headerlink" title="配置nginx与FastDFS关联配置文件"></a>配置nginx与FastDFS关联配置文件</h3><p>复制 fastdfs-nginx-module 源码中的配置文件到/etc/fdfs 目录， 并修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/local/leyou/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/</span><br><span class="line"></span><br><span class="line">vi /etc/fdfs/mod_fastdfs.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改以下配置：</p>
+<p><strong><em>这里不要在配置项后面写中文注释，不然配置文件不生效！！！</em></strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">connect_timeout=10                       # 客户端访问文件连接超时时长（单位：秒）</span><br><span class="line"></span><br><span class="line">tracker_server=192.168.56.101:22122    # tracker服务IP和端口</span><br><span class="line"></span><br><span class="line">url_have_group_name=true                # 访问链接前缀加上组名</span><br><span class="line"></span><br><span class="line">store_path0=/leyou/storage            # 文件存储路径</span><br></pre></td></tr></table></figure>
+
+<p>复制 FastDFS 的部分配置文件到/etc/fdfs 目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/leyou/FastDFS/conf/</span><br><span class="line">cp http.conf mime.types /etc/fdfs/</span><br></pre></td></tr></table></figure>
+
 <h2 id="nginx概念"><a href="#nginx概念" class="headerlink" title="nginx概念"></a>nginx概念</h2><ul>
 <li><p>upstream 负载均衡概要</p>
 <p>upstream 是 Nginx 的 HTTP Upstream 模块，这个模块通过一个简单的调度算法来实现客户<br>端 IP 到后端服务器的负载均衡</p>
@@ -701,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx工作原理"><span class="nav-number">1.</span> <span class="nav-text">nginx工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">2.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx添加新模块"><span class="nav-number">3.</span> <span class="nav-text">nginx添加新模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx概念"><span class="nav-number">4.</span> <span class="nav-text">nginx概念</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx工作原理"><span class="nav-number">1.</span> <span class="nav-text">nginx工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx常用命令"><span class="nav-number">2.</span> <span class="nav-text">nginx常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx添加新模块"><span class="nav-number">3.</span> <span class="nav-text">nginx添加新模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置nginx与FastDFS关联配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">配置nginx与FastDFS关联配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx概念"><span class="nav-number">4.</span> <span class="nav-text">nginx概念</span></a></li></ol></div>
             
 
           </div>
@@ -735,7 +745,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10k</span>
+    <span title="Site words total count">10.5k</span>
   
 </div>
 

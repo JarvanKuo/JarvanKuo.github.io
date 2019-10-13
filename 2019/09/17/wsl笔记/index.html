@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="JK的技术博客">
 <meta property="og:description" content="wsl 下的 ubuntu 系统一些问题总结！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-30T02:59:34.000Z">
+<meta property="og:updated_time" content="2019-10-13T03:12:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wsl笔记">
 <meta name="twitter:description" content="wsl 下的 ubuntu 系统一些问题总结！">
@@ -419,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  591
+                  822
                 </span>
               
 
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -479,9 +479,33 @@
 
 </li>
 </ol>
+<h2 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h2><p><a href="https://blog.csdn.net/starter_____/article/details/78241219" target="_blank" rel="noopener">Linux 创建、删除和改变用户信息 —— adduser useradd usermod deluser</a></p>
+<p><a href="https://blog.csdn.net/beitiandijun/article/details/41678251" target="_blank" rel="noopener">linux用户管理（1）—-创建用户（adduser和useradd）和删除用户（userdel）</a></p>
+<ul>
+<li><p>adduser user1</p>
+<p>ubuntu建用户最好用adduser，虽然adduser和useradd是一样的在别的linux糸统下，但是我在ubuntu下用useradd时，并没有创建同名的用户主目录。 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建用户，会创建同名的用户主目录</span></span><br><span class="line">adduser user1</span><br><span class="line"><span class="comment"># ubuntu查看用户列表</span></span><br><span class="line">cat /etc/passwd</span><br><span class="line"><span class="comment"># 用linux代替想要删除的用户账户， -r 表示连同用户主目录一块删除</span></span><br><span class="line">userdel -r user1</span><br><span class="line"><span class="comment"># 查看是否正确删除用户：</span></span><br><span class="line">id user1</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
 <h2 id="设置超级用户"><a href="#设置超级用户" class="headerlink" title="设置超级用户"></a>设置超级用户</h2><p>ubuntu的su初始密码设置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd</span><br></pre></td></tr></table></figure>
 
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><ul>
+<li><p>不同用户不共享环境变量</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 所有用户都生效</span></span><br><span class="line">sudo vim  /etc/profile </span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>存在退出终端后不生效问题！</p>
+</li>
+<li><p>退出终端后不生效问题</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当前用户生效</span></span><br><span class="line">sudo vim  ~/.bashrc   </span><br><span class="line"><span class="comment">## 在每个用户的 ~/.bashrc 添加 source /etc/profile 共享全局的path</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
 <h2 id="zsh美化终端"><a href="#zsh美化终端" class="headerlink" title="zsh美化终端"></a>zsh美化终端</h2><p><a href="https://www.jianshu.com/p/723c2241e8e7" target="_blank" rel="noopener">安装使用oh-my-zsh（Win10+WSL或Ubuntu）</a></p>
 <h3 id="设zsh为默认shell"><a href="#设zsh为默认shell" class="headerlink" title="设zsh为默认shell"></a>设zsh为默认shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh <span class="comment"># 设置 bash 同理</span></span><br></pre></td></tr></table></figure>
 
@@ -740,7 +764,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改更新源"><span class="nav-number">2.</span> <span class="nav-text">修改更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置超级用户"><span class="nav-number">3.</span> <span class="nav-text">设置超级用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh美化终端"><span class="nav-number">4.</span> <span class="nav-text">zsh美化终端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设zsh为默认shell"><span class="nav-number">4.1.</span> <span class="nav-text">设zsh为默认shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量PATH"><span class="nav-number">4.2.</span> <span class="nav-text">环境变量PATH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启-ssh-远程连接"><span class="nav-number">5.</span> <span class="nav-text">开启 ssh 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apt命令与问题"><span class="nav-number">6.</span> <span class="nav-text">apt命令与问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-和-wsl-互相访问文件"><span class="nav-number">7.</span> <span class="nav-text">windows 和 wsl 互相访问文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl开机没有自启动ssh"><span class="nav-number">8.</span> <span class="nav-text">wsl开机没有自启动ssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重装python"><span class="nav-number">9.</span> <span class="nav-text">重装python</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改更新源"><span class="nav-number">2.</span> <span class="nav-text">修改更新源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建用户"><span class="nav-number">3.</span> <span class="nav-text">新建用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置超级用户"><span class="nav-number">4.</span> <span class="nav-text">设置超级用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">5.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh美化终端"><span class="nav-number">6.</span> <span class="nav-text">zsh美化终端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设zsh为默认shell"><span class="nav-number">6.1.</span> <span class="nav-text">设zsh为默认shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量PATH"><span class="nav-number">6.2.</span> <span class="nav-text">环境变量PATH</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启-ssh-远程连接"><span class="nav-number">7.</span> <span class="nav-text">开启 ssh 远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apt命令与问题"><span class="nav-number">8.</span> <span class="nav-text">apt命令与问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-和-wsl-互相访问文件"><span class="nav-number">9.</span> <span class="nav-text">windows 和 wsl 互相访问文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wsl开机没有自启动ssh"><span class="nav-number">10.</span> <span class="nav-text">wsl开机没有自启动ssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重装python"><span class="nav-number">11.</span> <span class="nav-text">重装python</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +798,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10k</span>
+    <span title="Site words total count">10.5k</span>
   
 </div>
 
